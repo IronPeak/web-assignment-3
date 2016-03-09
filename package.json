@@ -2,7 +2,7 @@
   "name": "wepo-assignment-3",
   "version": "1.0.0",
   "description": "Base for 3rd hand-in assignment in Web Programming 2 Spring 2016",
-  "author": "Daníel B. Sigurgeirsson",
+  "author": "Hrafn Orri Hrafnkelsson",
   "license": "MIT",
   "main": "src/app.js",
   "scripts": {
