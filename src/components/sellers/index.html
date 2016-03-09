@@ -1,6 +1,10 @@
 <div class="container">
+
+<div class="header">
+
+</div>
 	<div class="button">
-		 <button type="button" class="btn btn-default btn-lg" id="myBtn"><span class="glyphicon glyphicon-plus-sign"></span></button>
+		 <button type="button" class="btn btn-default btn-lg" id="myBtn"><span id="glyph-add" class="glyphicon glyphicon-plus-sign"></span></button>
 		  <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -11,7 +15,7 @@
         </div>
         <div class="modal-body" style="padding:40px 50px;">
 
-          <form ng-submit="addi()" role="form">
+          <form ng-submit="add(seller)" role="form">
             <div class="form-group">
               <label for="name"></span> Name</label>
               <input type="text" class="form-control" id="name" ng-model="seller.name" placeholder="">

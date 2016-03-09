@@ -16,17 +16,17 @@ function SellersController($scope, AppResource) {
 		AppResource.getSellers().success(function(sellers) {
 			$scope.sellers = sellers;
 		});
-	}
+	};
 	
 	$scope.add = function(seller) {
 		AppResource.addSeller(seller);
 		$scope.updateScope();
-	}
+	};
 	
 	$scope.update = function(seller) {
 		AppResource.updateSeller(seller);
 		$scope.updateScope();
-	}
+	};
 	
 	$(document).ready(function(){
 		$("#myBtn").click(function(){
@@ -34,6 +34,6 @@ function SellersController($scope, AppResource) {
 		});
 	});
 	
-	Constructor();
+	new Constructor();
 	
 });
