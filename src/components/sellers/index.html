@@ -5,7 +5,8 @@
 </div>
 	<div class="button">
 		 <button type="button" class="btn btn-default btn-lg" id="myBtn"><span id="glyph-add" class="glyphicon glyphicon-plus-sign"></span></button>
-		  <div class="modal fade" id="myModal" role="dialog">
+
+ <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -15,7 +16,11 @@
         </div>
         <div class="modal-body" style="padding:40px 50px;">
 
-          <form ng-submit="add(seller)" role="form">
+          <form ng-submit="add(seller)">
+          <div class="form-group">
+              <label for="id"></span> Id</label>
+              <input type="text" class="form-control" id="id" ng-model="seller.id" placeholder="">
+            </div>
             <div class="form-group">
               <label for="name"></span> Name</label>
               <input type="text" class="form-control" id="name" ng-model="seller.name" placeholder="">
@@ -24,7 +29,7 @@
               <label for="category"></span> Category</label>
               <input type="text" class="form-control" id="category" ng-model="seller.category" placeholder="">
             </div>
-              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
+              <button type="submit" id="saveSeller"class="btn btn-success btn-block"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
           </form>
 
         </div>

@@ -5,6 +5,7 @@ function SellersController($scope, AppResource) {
 	
 	function initialize() {
 		$scope.seller = {
+			id: '',
 			name: '',
 			category: ''
 		};
@@ -29,7 +30,14 @@ function SellersController($scope, AppResource) {
 			$("#myModal").modal();
 		});
 	});
+	$(document).ready(function(){
+		$("#saveSeller").click(function(){
+			$('.modal-body').find('textarea,input').val('');
+			$("#myModal").modal('hide');
+		});
+	});
 	
 	initialize();
+	
 	
 });
