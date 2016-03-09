@@ -1,5 +1,15 @@
 "use strict";
 
-describe("SellersController should be unit tested here", function() {
-	// TODO: add beforeEach/describe/it/etc. functions as appropriate!
+describe("SellersController", function() {
+	
+	beforeEach(module("project3App"));
+	
+	var AppResource;
+	
+    beforeEach(inject(function($injector) {
+		
+        AppResource = $injector.get("AppResource");
+		
+    }));
+	
 });
