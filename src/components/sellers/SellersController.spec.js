@@ -35,9 +35,26 @@ describe("SellersController", function() {
 		};
 				
 		spyOn(appresources, "addSeller");
+		
 		scope.add(seller);
 		
 		expect(appresources.addSeller).toHaveBeenCalledWith(seller);
+    });
+	
+	it("update should updateSeller in appresources", function() {
+		var id = 13;
+        var seller = {
+			id: 13,
+			name: "SellerName",
+			category: "Fatnadur",
+			imagePath: "image.com/abc.jpg"
+		};
+				
+		spyOn(appresources, "updateSeller");
+		
+		scope.update(id, seller);
+		
+		expect(appresources.updateSeller).toHaveBeenCalledWith(id, seller);
     });
 	
 });

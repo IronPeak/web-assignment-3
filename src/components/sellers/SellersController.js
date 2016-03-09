@@ -3,16 +3,12 @@
 angular.module("project3App").controller("SellersController",
 function SellersController($scope, AppResource) {
 	
-	function Constructor() {
+	function initialize() {
 		$scope.seller = {
 			name: '',
 			category: ''
 		};
 		
-		$scope.updateScope();
-	}
-	
-	$scope.updateScope = function() {
 		AppResource.getSellers().success(function(sellers) {
 			$scope.sellers = sellers;
 		});
@@ -20,13 +16,11 @@ function SellersController($scope, AppResource) {
 	
 	$scope.add = function(seller) {
 		AppResource.addSeller(seller);
-		$scope.updateScope();
-	}
+	};
 	
-	$scope.update = function(seller) {
-		AppResource.updateSeller(seller);
-		$scope.updateScope();
-	}
+	$scope.update = function(id, sell) {
+		AppResource.updateSeller(id, sell);
+	};
 	
 	$(document).ready(function(){
 		$("#myBtn").click(function(){
@@ -34,6 +28,6 @@ function SellersController($scope, AppResource) {
 		});
 	});
 	
-	Constructor();
+	initialize();
 	
 });
