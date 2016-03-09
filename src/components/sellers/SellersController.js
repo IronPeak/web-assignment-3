@@ -11,7 +11,11 @@ function SellersController($scope, AppResource) {
 	});
 	
 	function add(seller) {
-		
+		AppResource.addSeller(seller);
+	}
+	
+	function update(seller) {
+		AppResource.updateSeller(seller);
 	}
 
 });
