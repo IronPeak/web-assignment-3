@@ -2,37 +2,38 @@
 
 angular.module("project3App").controller("SellersController",
 function SellersController($scope, AppResource) {
-	// TODO: load data from AppResource! Also, add other methods, such as to
-	// add/update sellers etc.
-
-	$scope.seller = {
-		name: '',
-		category: ''
-
-	};
-
-	AppResource.getSellers().success(function(sellers) {
-		$scope.sellers = sellers;
+	
+	function Constructor() {
+		$scope.seller = {
+			name: '',
+			category: ''
+		};
+		
+		$scope.updateScope();
+	}
+	
+	$scope.updateScope = function() {
+		AppResource.getSellers().success(function(sellers) {
+			$scope.sellers = sellers;
+		});
+	}
+	
+	$scope.add = function(seller) {
+		AppResource.addSeller(seller);
+		$scope.updateScope();
+	}
+	
+	$scope.update = function(seller) {
+		AppResource.updateSeller(seller);
+		$scope.updateScope();
+	}
+	
+	$(document).ready(function(){
+		$("#myBtn").click(function(){
+			$("#myModal").modal();
+		});
 	});
 	
-	$scope.addi = function () {
-
-		console.log($scope.seller);
-	};
-
-	function add(seller) {
-		AppResource.addSeller(seller);
-	}
+	Constructor();
 	
-	function update(seller) {
-		AppResource.updateSeller(seller);
-	}
-
-	$(document).ready(function(){
-    $("#myBtn").click(function(){
-        $("#myModal").modal();
-    });
-});
-
-
 });
