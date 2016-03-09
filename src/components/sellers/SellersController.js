@@ -17,6 +17,7 @@ function SellersController($scope, AppResource) {
 	
 	$scope.add = function(seller) {
 		AppResource.addSeller(seller);
+		initialize();
 		$scope.updateScope();
 	};
 	
