@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellersController",
-function SellersController($scope, AppResource, SellerDlg) {
+function SellersController($scope, AppResource, DialogWindow) {
 	
 	function initialize() {
 		$scope.seller = {
@@ -23,28 +23,35 @@ function SellersController($scope, AppResource, SellerDlg) {
 	};
 
 
-	$scope.onAddSeller = function onAddSeller() {
-
-		SellerDlg.show().then(function(seller) {
-			AppResource.addSeller(seller).success(function(seller) {
-			}).error(function() {
-				//TODO ERROR
-			});
+	$scope.add = function() {
+		DialogWindow.show().then(function(seller) {
+			var result = AppResource.addSeller(seller);
+			if(result !== undefined) {
+				result.success(function(s) {
+					$scope.refreshSellers();
+					initialize();
+				}).error(function() {
+					
+				});
+			}
 		});
 	};
 
-		$scope.update = function update(s) {
-			var oldSeller = $.extend({}, s);
-		SellerDlg.show(oldSeller).then(function(s) {
-			AppResource.updateSeller(s.id, s).success(function(s) {
-			}).error(function() {
-				//TODO ERROR
-			});
+	$scope.update = function(seller) {
+		var oldSeller = $.extend({}, seller);
+		DialogWindow.show(oldSeller).then(function(updated) {
+			var result = AppResource.updateSeller(seller.id, updated);
+			if(result !== undefined) {
+				result.success(function(s) {
+					$scope.refreshSellers();
+					initialize();
+				}).error(function() {
+					
+				});
+			}
 		});
 	};
-	
 
-	
 	initialize();
 	
 });

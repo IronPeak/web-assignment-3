@@ -4,7 +4,22 @@ describe("SellersController", function() {
 	
 	beforeEach(module("project3App"));
 	
-	var controller, scope, appresources;
+	var controller, scope, appresources, dialogwindow;
+	
+	dialogwindow = {
+		data: undefined,
+		setData: function(d) {
+			this.data = d;
+		},
+		show: function(arg) {
+			var ret = this.data;
+			return {
+			    then: function(fn) {
+				    fn(ret);
+			    }
+			};
+		}
+	};
 	
 	describe("SellersController appresource success", function() {
 		
@@ -23,7 +38,8 @@ describe("SellersController", function() {
 	
 			controller = $controller("SellersController", {
 				$scope: scope,
-				AppResource: appresources
+				AppResource: appresources,
+				DialogWindow: dialogwindow
 			});
 	
 		}));
@@ -43,10 +59,11 @@ describe("SellersController", function() {
 				category: "Fatnadur",
 				imagePath: "image.com/abc.jpg"
 			};
-					
+			
+			dialogwindow.setData(seller);
 			spyOn(appresources, "addSeller");
 			
-			scope.add(seller);
+			scope.add();
 			
 			expect(appresources.addSeller).toHaveBeenCalledWith(seller);
 		});
@@ -59,9 +76,10 @@ describe("SellersController", function() {
 				imagePath: "image.com/abc.jpg"
 			};
 					
+			dialogwindow.setData(seller);
 			spyOn(scope, "refreshSellers");
 			
-			scope.add(seller);
+			scope.add();
 			
 			expect(scope.refreshSellers).toHaveBeenCalled();
 		});
@@ -74,10 +92,11 @@ describe("SellersController", function() {
 				category: "Fatnadur",
 				imagePath: "image.com/abc.jpg"
 			};
-					
+			
+			dialogwindow.setData(seller);
 			spyOn(appresources, "updateSeller");
 			
-			scope.update(id, seller);
+			scope.update(seller);
 			
 			expect(appresources.updateSeller).toHaveBeenCalledWith(id, seller);
 		});
@@ -90,10 +109,11 @@ describe("SellersController", function() {
 				category: "Fatnadur",
 				imagePath: "image.com/abc.jpg"
 			};
-					
+			
+			dialogwindow.setData(seller);
 			spyOn(scope, "refreshSellers");
 			
-			scope.update(id, seller);
+			scope.update(seller);
 			
 			expect(scope.refreshSellers).toHaveBeenCalled();
 		});
@@ -106,10 +126,11 @@ describe("SellersController", function() {
 				category: "Fatnadur",
 				imagePath: "image.com/abc.jpg"
 			};
-					
+			
+			dialogwindow.setData(seller);
 			spyOn(scope, "refreshSellers");
 			
-			scope.update(id, seller);
+			scope.update(seller);
 			
 			expect(scope.refreshSellers).toHaveBeenCalled();
 		});
@@ -133,7 +154,8 @@ describe("SellersController", function() {
 	
 			controller = $controller("SellersController", {
 				$scope: scope,
-				AppResource: appresources
+				AppResource: appresources,
+				DialogWindow: dialogwindow
 			});
 	
 		}));
@@ -154,9 +176,10 @@ describe("SellersController", function() {
 				imagePath: "image.com/abc.jpg"
 			};
 					
+			dialogwindow.setData(seller);
 			spyOn(appresources, "addSeller");
 			
-			scope.add(seller);
+			scope.add();
 			
 			expect(appresources.addSeller).toHaveBeenCalledWith(seller);
 		});
@@ -168,10 +191,11 @@ describe("SellersController", function() {
 				category: "Fatnadur",
 				imagePath: "image.com/abc.jpg"
 			};
-					
+			
+			dialogwindow.setData(seller);
 			spyOn(scope, "refreshSellers");
 			
-			scope.add(seller);
+			scope.add();
 			
 			expect(scope.refreshSellers).not.toHaveBeenCalled();
 		});
@@ -185,9 +209,10 @@ describe("SellersController", function() {
 				imagePath: "image.com/abc.jpg"
 			};
 					
+			dialogwindow.setData(seller);
 			spyOn(appresources, "updateSeller");
 			
-			scope.update(id, seller);
+			scope.update(seller);
 			
 			expect(appresources.updateSeller).toHaveBeenCalledWith(id, seller);
 		});
@@ -201,9 +226,10 @@ describe("SellersController", function() {
 				imagePath: "image.com/abc.jpg"
 			};
 					
+			dialogwindow.setData(seller);
 			spyOn(scope, "refreshSellers");
 			
-			scope.update(id, seller);
+			scope.update(seller);
 			
 			expect(scope.refreshSellers).not.toHaveBeenCalled();
 		});
