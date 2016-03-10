@@ -78,9 +78,9 @@ function AppResource() {
 					fn(data);
 				}
 				return {
-					error: function f() {
+					error: function(fn) {
 						if (!condition) {
-							f();
+							fn();
 						}
 					}
 				};

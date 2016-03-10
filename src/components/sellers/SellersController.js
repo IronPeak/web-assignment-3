@@ -17,20 +17,33 @@ function SellersController($scope, AppResource) {
 	$scope.refreshSellers = function() {
 		AppResource.getSellers().success(function(sellers) {
 			$scope.sellers = sellers;
+		}).error(function() {
+				
 		});
 	};
 	
 	$scope.add = function(seller) {
-		console.log(seller);
-		AppResource.addSeller(seller);
-		initialize();
-		$scope.refreshSellers();
-	};	
-	
+		var result = AppResource.addSeller(seller);
+		if(result !== undefined) {
+			result.success(function(s) {
+				$scope.refreshSellers();
+				initialize();
+			}).error(function() {
+				
+			});
+		}
+	};
 
-	$scope.update = function(id, sell) {
-		AppResource.updateSeller(id, sell);
-		$scope.refreshSellers();
+	$scope.update = function(id, seller) {
+		var result = AppResource.updateSeller(id, seller);
+		if(result !== undefined) {
+			result.success(function(s) {
+				$scope.refreshSellers();
+				initialize();
+			}).error(function() {
+				
+			});
+		}
 	};
 	
 	$(document).ready(function(){
@@ -38,12 +51,13 @@ function SellersController($scope, AppResource) {
 			$("#myModal").modal();
 		});
 	});
-	/*$(document).ready(function(){
+	
+	$(document).ready(function(){
 		$("#saveSeller").click(function(){
 			$('.modal-body').find('textarea,input').val('');
 			$("#myModal").modal('hide');
 		});
-	});*/
+	});
 	
 	initialize();
 	
