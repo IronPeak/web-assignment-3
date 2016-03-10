@@ -1,7 +1,11 @@
 "use strict";
 
 angular.module("project3App").controller("SellerDlgController",
-	function SellerDlgController($scope) {
+	function SellerDlgController($scope, modalParam) {
+
+		if(modalParam) {
+			$scope.seller = modalParam;
+		}
 
 		$scope.onOk = function onOk() {
 			$scope.$close($scope.seller);

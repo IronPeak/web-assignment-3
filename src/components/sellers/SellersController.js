@@ -27,7 +27,16 @@ function SellersController($scope, AppResource, SellerDlg) {
 
 		SellerDlg.show().then(function(seller) {
 			AppResource.addSeller(seller).success(function(seller) {
-				var newSeller = seller;
+			}).error(function() {
+				//TODO ERROR
+			});
+		});
+	};
+
+		$scope.update = function update(s) {
+			var oldSeller = $.extend({}, s);
+		SellerDlg.show(oldSeller).then(function(s) {
+			AppResource.updateSeller(s.id, s).success(function(s) {
 			}).error(function() {
 				//TODO ERROR
 			});
@@ -35,18 +44,6 @@ function SellersController($scope, AppResource, SellerDlg) {
 	};
 	
 
-	$scope.update = function(seller) {
-		var id = seller.id;
-		var result = AppResource.updateSeller(id, seller);
-		if(result !== undefined) {
-			result.success(function(s) {
-				$scope.refreshSellers();
-				initialize();
-			}).error(function() {
-				
-			});
-		}
-	};
 	
 	initialize();
 	
