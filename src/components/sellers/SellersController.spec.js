@@ -41,6 +41,21 @@ describe("SellersController", function() {
 		expect(appresources.addSeller).toHaveBeenCalledWith(seller);
     });
 	
+	it("add should refresh sellers", function() {
+        var seller = {
+			id: 13,
+			name: "SellerName",
+			category: "Fatnadur",
+			imagePath: "image.com/abc.jpg"
+		};
+				
+		spyOn(scope, "refreshSellers");
+		
+		scope.add(seller);
+		
+		expect(scope.refreshSellers).toHaveBeenCalled();
+    });
+	
 	it("update should updateSeller in appresources", function() {
 		var id = 13;
         var seller = {
@@ -55,6 +70,22 @@ describe("SellersController", function() {
 		scope.update(id, seller);
 		
 		expect(appresources.updateSeller).toHaveBeenCalledWith(id, seller);
+    });
+	
+	it("update should refresh sellers", function() {
+		var id = 13;
+        var seller = {
+			id: 13,
+			name: "SellerName",
+			category: "Fatnadur",
+			imagePath: "image.com/abc.jpg"
+		};
+				
+		spyOn(scope, "refreshSellers");
+		
+		scope.update(id, seller);
+		
+		expect(scope.refreshSellers).toHaveBeenCalled();
     });
 	
 });

@@ -10,6 +10,10 @@ function SellersController($scope, AppResource) {
 			category: ''
 		};
 		
+		$scope.refreshSellers();
+	}
+	
+	$scope.refreshSellers = function() {
 		AppResource.getSellers().success(function(sellers) {
 			$scope.sellers = sellers;
 		});
@@ -17,13 +21,13 @@ function SellersController($scope, AppResource) {
 	
 	$scope.add = function(seller) {
 		AppResource.addSeller(seller);
-		initialize();
-		$scope.updateScope();
+		$scope.refreshSellers();
 	};
 	
 
 	$scope.update = function(id, sell) {
 		AppResource.updateSeller(id, sell);
+		$scope.refreshSellers();
 	};
 	
 	$(document).ready(function(){
@@ -39,6 +43,5 @@ function SellersController($scope, AppResource) {
 	});
 	
 	initialize();
-	
 	
 });

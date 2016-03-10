@@ -118,7 +118,12 @@ function AppResource() {
 
 		updateSeller: function(id, seller) {
 			if (mockResource.successUpdateSeller) {
-				var current = _.find(mockSellers, function(o){ return o.id === id;});
+				var current = null;
+				for(var i = 0; i < mockSellers.length; i++) {
+					if(mockSellers[i].id === id) {
+						current = mockSellers[i];
+					}
+				}
 				if (current !== null) {
 					current.name      = seller.name;
 					current.category  = seller.category;
