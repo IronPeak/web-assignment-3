@@ -23,23 +23,33 @@ function SellersController($scope, AppResource, SellerDlg) {
 	};
 
 
-	$scope.onAddSeller = function onAddSeller() {
 
+	$scope.add = function() {
 		SellerDlg.show().then(function(seller) {
-			AppResource.addSeller(seller).success(function(seller) {
-			}).error(function() {
-				//TODO ERROR
-			});
+			var result = AppResource.addSeller(seller);
+			if(result !== undefined) {
+				result.success(function(s) {
+					$scope.refreshSellers();
+					initialize();
+				}).error(function() {
+					
+				});
+			}
 		});
 	};
 
-		$scope.update = function update(s) {
-			var oldSeller = $.extend({}, s);
-		SellerDlg.show(oldSeller).then(function(s) {
-			AppResource.updateSeller(s.id, s).success(function(s) {
-			}).error(function() {
-				//TODO ERROR
-			});
+	$scope.update = function(seller) {
+		var oldSeller = $.extend({}, seller);
+		SellerDlg.show(oldSeller).then(function(updated) {
+			var result = AppResource.updateSeller(seller.id, updated);
+			if(result !== undefined) {
+				result.success(function(s) {
+					$scope.refreshSellers();
+					initialize();
+				}).error(function() {
+					
+				});
+			}
 		});
 	};
 	
