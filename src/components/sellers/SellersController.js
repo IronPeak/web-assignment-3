@@ -7,7 +7,8 @@ function SellersController($scope, AppResource) {
 		$scope.seller = {
 			id: '',
 			name: '',
-			category: ''
+			category: '',
+			imagePath: ''
 		};
 		
 		$scope.refreshSellers();
@@ -26,6 +27,7 @@ function SellersController($scope, AppResource) {
 		if(result !== undefined) {
 			result.success(function(s) {
 				$scope.refreshSellers();
+				initialize();
 			}).error(function() {
 				
 			});
@@ -37,6 +39,7 @@ function SellersController($scope, AppResource) {
 		if(result !== undefined) {
 			result.success(function(s) {
 				$scope.refreshSellers();
+				initialize();
 			}).error(function() {
 				
 			});
