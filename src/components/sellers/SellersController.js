@@ -7,7 +7,8 @@ function SellersController($scope, AppResource) {
 		$scope.seller = {
 			id: '',
 			name: '',
-			category: ''
+			category: '',
+			imagePath: ''
 		};
 		
 		$scope.refreshSellers();
@@ -17,10 +18,12 @@ function SellersController($scope, AppResource) {
 		AppResource.getSellers().success(function(sellers) {
 			$scope.sellers = sellers;
 		});
-	}
+	};
 	
 	$scope.add = function(seller) {
+		console.log(seller);
 		AppResource.addSeller(seller);
+		initialize();
 		$scope.refreshSellers();
 	};
 	
