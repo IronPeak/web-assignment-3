@@ -4,53 +4,10 @@
 
     </div>
 
-    <div class="button">
-        <button type="button" class="btn btn-default btn-lg" id="myBtn"><span id="glyph-add" class="glyphicon glyphicon-plus-sign"></span>
+        <button type="button" class="btn btn-default btn-lg" id="myBtn" ng-click="onAddSeller()"><span id="glyph-add" class="glyphicon glyphicon-plus-sign"></span>
         </button>
 
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header" style="padding:35px 50px;">
-                        <h4><span class="glyphicon glyphicon-user"></span> Add Seller</h4>
-                    </div>
-                    <div class="modal-body" style="padding:40px 50px;">
-
-                        <form ng-submit="add(seller)">
-                            <div class="form-group">
-                                <label for="id">
-                                    </span> Id</label>
-                                <input type="text" class="form-control" id="id" ng-model="seller.id" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="name">
-                                    </span> Name</label>
-                                <input type="text" class="form-control" id="name" ng-model="seller.name" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="category">
-                                    </span> Category</label>
-                                <input type="text" class="form-control" id="category" ng-model="seller.category" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="imagepath">
-                                    </span> Imagepath</label>
-                                <input type="text" class="form-control" id="path" ng-model="seller.imagePath" placeholder="">
-                            </div>
-                            <button type="submit" id="saveSeller" class="btn btn-success btn-block"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
-                        </form>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     <div class="panel panel-default">
 		<div class="table-responsive seller-table-wrapper"> 
@@ -67,8 +24,9 @@
 						<tr ng-repeat="s in sellers">
 							<td class="seller-name">{{s.name}}</td>
 							<td class="seller-category">{{s.category}}</td>
-							<td class="seller-actions">
-							    <a href="#" class="btn btn-info seller-edit-button" role="button">Edit</a>
+							<td class="seller-actions">      
+							 <button type="button" class="btn btn-info seller-edit-button" id="editBtn" ng-click="update(s)"> Edit
+							 </button>
 							    <a href="#" class="btn btn-info seller-view-button" role="button">View</a>
 							</td>
 						</tr>

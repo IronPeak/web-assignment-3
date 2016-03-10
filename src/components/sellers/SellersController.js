@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellersController",
-function SellersController($scope, AppResource) {
+function SellersController($scope, AppResource, SellerDlg) {
 	
 	function initialize() {
 		$scope.seller = {
@@ -21,20 +21,22 @@ function SellersController($scope, AppResource) {
 				
 		});
 	};
-	
-	$scope.add = function(seller) {
-		var result = AppResource.addSeller(seller);
-		if(result !== undefined) {
-			result.success(function(s) {
-				$scope.refreshSellers();
-				initialize();
-			}).error(function() {
-				
-			});
-		}
-	};
 
-	$scope.update = function(id, seller) {
+
+	$scope.onAddSeller = function onAddSeller() {
+
+		SellerDlg.show().then(function(seller) {
+			AppResource.addSeller(seller).success(function(seller) {
+				var newSeller = seller;
+			}).error(function() {
+				//TODO ERROR
+			});
+		});
+	};
+	
+
+	$scope.update = function(seller) {
+		var id = seller.id;
 		var result = AppResource.updateSeller(id, seller);
 		if(result !== undefined) {
 			result.success(function(s) {
@@ -45,19 +47,6 @@ function SellersController($scope, AppResource) {
 			});
 		}
 	};
-	
-	$(document).ready(function(){
-		$("#myBtn").click(function(){
-			$("#myModal").modal();
-		});
-	});
-	
-	$(document).ready(function(){
-		$("#saveSeller").click(function(){
-			$('.modal-body').find('textarea,input').val('');
-			$("#myModal").modal('hide');
-		});
-	});
 	
 	initialize();
 	
