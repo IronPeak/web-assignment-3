@@ -25,7 +25,7 @@ function SellersController($scope, AppResource) {
 		AppResource.addSeller(seller);
 		initialize();
 		$scope.refreshSellers();
-	};
+	};	
 	
 
 	$scope.update = function(id, sell) {
@@ -38,12 +38,12 @@ function SellersController($scope, AppResource) {
 			$("#myModal").modal();
 		});
 	});
-	$(document).ready(function(){
+	/*$(document).ready(function(){
 		$("#saveSeller").click(function(){
 			$('.modal-body').find('textarea,input').val('');
 			$("#myModal").modal('hide');
 		});
-	});
+	});*/
 	
 	initialize();
 	
