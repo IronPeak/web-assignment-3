@@ -16,18 +16,31 @@ function SellersController($scope, AppResource) {
 	$scope.refreshSellers = function() {
 		AppResource.getSellers().success(function(sellers) {
 			$scope.sellers = sellers;
+		}).error(function() {
+				
 		});
-	}
-	
-	$scope.add = function(seller) {
-		AppResource.addSeller(seller);
-		$scope.refreshSellers();
 	};
 	
+	$scope.add = function(seller) {
+		var result = AppResource.addSeller(seller);
+		if(result !== undefined) {
+			result.success(function(s) {
+				$scope.refreshSellers();
+			}).error(function() {
+				
+			});
+		}
+	};
 
-	$scope.update = function(id, sell) {
-		AppResource.updateSeller(id, sell);
-		$scope.refreshSellers();
+	$scope.update = function(id, seller) {
+		var result = AppResource.updateSeller(id, seller);
+		if(result !== undefined) {
+			result.success(function(s) {
+				$scope.refreshSellers();
+			}).error(function() {
+				
+			});
+		}
 	};
 	
 	$(document).ready(function(){
@@ -35,6 +48,7 @@ function SellersController($scope, AppResource) {
 			$("#myModal").modal();
 		});
 	});
+	
 	$(document).ready(function(){
 		$("#saveSeller").click(function(){
 			$('.modal-body').find('textarea,input').val('');
