@@ -52,23 +52,30 @@
         </div>
     </div>
 
-    <div class="seller-table-wrapper">
-        <table class="seller-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="s in sellers">
-                    <td class="seller-name">{{s.name}}</td>
-                    <td class="seller-category">{{s.category}}</td>
-                    <td class="seller-view"><a href="#" class="btn btn-info seller-view-button" role="button">View</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <div class="panel panel-default">
+		<div class="table-responsive seller-table-wrapper"> 
+			<table class="table table-hover seller-table">
+				<thead>
+					<tr>
+						<th class="seller-table-head-name">Name</th>
+						<th class="seller-table-head-category">Category</th>
+						<th class="seller-table-head-actions">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<a href="#">
+						<tr ng-repeat="s in sellers">
+							<td class="seller-name">{{s.name}}</td>
+							<td class="seller-category">{{s.category}}</td>
+							<td class="seller-actions">
+							    <a href="#" class="btn btn-info seller-edit-button" role="button">Edit</a>
+							    <a href="#" class="btn btn-info seller-view-button" role="button">View</a>
+							</td>
+						</tr>
+					</a>
+				</tbody>
+			</table>
+		</div>
+	</div>
 
 </div>
