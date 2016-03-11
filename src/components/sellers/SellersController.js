@@ -18,7 +18,7 @@ function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 		AppResource.getSellers().success(function(sellers) {
 			$scope.sellers = sellers;
 		}).error(function() {
-				
+			centrisNotify.error("sellers.Messages.LoadFailed");
 		});
 	};
 

@@ -17,5 +17,5 @@ angular.module("project3App", ["ngRoute", "ui.bootstrap", "sharedServices", "pas
 		suffix: ".json"
 	});
 	$translateProvider.useSanitizeValueStrategy('escape');
-	$translateProvider.preferredLanguage('en');
+	$translateProvider.preferredLanguage('is');
 });

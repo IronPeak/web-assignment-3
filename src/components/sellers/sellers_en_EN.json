@@ -3,6 +3,8 @@
 		"Title":                     "Sellers List",
 		"Name":                      "Name",
 		"Category":					"Category",
+		"Image": 					"Image",
+		"Action":					"Actions",
 		"Messages" : {
 			"LoadFailed":            "Failed to load the list of sellers",
 			"SaveSucceeded":         "The seller has been added successfully",
