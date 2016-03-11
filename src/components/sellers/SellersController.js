@@ -29,11 +29,11 @@ function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 			var result = AppResource.addSeller(seller);
 			if(result !== undefined) {
 				result.success(function(s) {
-					centrisNotify.success("Save Success"); //Þarf að setja þetta inn í language
-					$scope.refreshSellers();
+					centrisNotify.success("sellers.Messages.SaveSucceeded");
+					$scope.refreshSellers();			
 					initialize();
 				}).error(function() {
-					centrisNotify.error("Save Failed"); //Þarf að setja þetta inn í language
+					centrisNotify.error("sellers.Messages.SaveFailed");
 				});
 			}
 		});
@@ -45,11 +45,11 @@ function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 			var result = AppResource.updateSeller(seller.id, updated);
 			if(result !== undefined) {
 				result.success(function(s) {
-					centrisNotify.success("Save Success"); //Þarf að setja þetta inn í language
+					centrisNotify.success("sellers.Messages.EditSucceded");
 					$scope.refreshSellers();
 					initialize();
 				}).error(function() {
-					centrisNotify.error("Save Failed"); //Þarf að setja þetta inn í language
+					centrisNotify.error("sellers.Messages.EditFailed");
 				});
 			}
 		});

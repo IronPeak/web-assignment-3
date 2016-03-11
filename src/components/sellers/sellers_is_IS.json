@@ -6,7 +6,9 @@
 		"Messages" : {
 			"LoadFailed":            "Ekki tókst að sækja lista yfir seljendur",
 			"SaveSucceeded":         "Nýjum seljanda hefur verið bætt við",
-			"SaveFailed":            "Því miður tókst ekki að bæta við nýjum seljanda"
+			"EditSucceded":			"Seljanda hefur verið breytt",
+			"SaveFailed":            "Því miður tókst ekki að bæta við nýjum seljanda",
+			"EditFailed": 			"Því miður tókst ekki að breyta seljanda"
 		}
 	}
 }

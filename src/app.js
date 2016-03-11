@@ -7,5 +7,15 @@ angular.module("project3App", ["ngRoute", "ui.bootstrap", "sharedServices", "pas
 		templateUrl: "components/sellers/index.html"
 	});
 
-
+	$translateProvider.fallbackLanguage('en');
+	$translateProvider.registerAvailableLanguageKeys(['en','is'], {
+		'en_*': 'en',
+		'is_*': 'is'
+	});
+	$translateProvider.useStaticFilesLoader({
+		prefix: "lang_",
+		suffix: ".json"
+	});
+	$translateProvider.useSanitizeValueStrategy('escape');
+	$translateProvider.preferredLanguage('is');
 });
