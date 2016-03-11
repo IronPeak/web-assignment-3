@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellersController",
-function SellersController($scope, AppResource, SellerDlg) {
+function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 	
 	function initialize() {
 		$scope.seller = {
@@ -29,10 +29,11 @@ function SellersController($scope, AppResource, SellerDlg) {
 			var result = AppResource.addSeller(seller);
 			if(result !== undefined) {
 				result.success(function(s) {
+					centrisNotify.success("Save Success"); //Þarf að setja þetta inn í language
 					$scope.refreshSellers();
 					initialize();
 				}).error(function() {
-					
+					centrisNotify.error("Save Failed"); //Þarf að setja þetta inn í language
 				});
 			}
 		});
@@ -44,10 +45,11 @@ function SellersController($scope, AppResource, SellerDlg) {
 			var result = AppResource.updateSeller(seller.id, updated);
 			if(result !== undefined) {
 				result.success(function(s) {
+					centrisNotify.success("Save Success"); //Þarf að setja þetta inn í language
 					$scope.refreshSellers();
 					initialize();
 				}).error(function() {
-					
+					centrisNotify.error("Save Failed"); //Þarf að setja þetta inn í language
 				});
 			}
 		});
