@@ -5,6 +5,8 @@
 		"Category":					"Flokkur",
 		"Image": 					"Mynd",
 		"Action":					"Aðgerðir",
+		"Edit":						"Breyta",
+		"View":						"Skoða",
 		"Messages" : {
 			"LoadFailed":            "Ekki tókst að sækja lista yfir seljendur",
 			"SaveSucceeded":         "Nýjum seljanda hefur verið bætt við",

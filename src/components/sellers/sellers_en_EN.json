@@ -5,6 +5,8 @@
 		"Category":					"Category",
 		"Image": 					"Image",
 		"Action":					"Actions",
+		"Edit":						"Edit",
+		"View":						"View",
 		"Messages" : {
 			"LoadFailed":            "Failed to load the list of sellers",
 			"SaveSucceeded":         "The seller has been added successfully",
