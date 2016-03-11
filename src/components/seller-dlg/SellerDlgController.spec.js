@@ -16,7 +16,7 @@ describe("SellersController", function() {
 			var2: 'abc',
 			var3: 1000,
 			var4: "string"
-		}
+		};
 	
 		controller = $controller("SellerDlgController", {
 			$scope: scope,
