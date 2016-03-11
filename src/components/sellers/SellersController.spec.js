@@ -1,10 +1,21 @@
 "use strict";
 
+angular.module('translateNoop', [])
+  .factory('$translateStaticFilesLoader', function ($q) {
+    return function () {
+      var deferred = $q.defer();
+      deferred.resolve({});
+      return deferred.promise;
+    };
+  });
+
 describe("SellersController", function() {
 	
 	beforeEach(module("project3App"));
 	
-	var controller, scope, appresources, dialogwindow;
+	beforeEach(module('translateNoop'));
+	
+	var controller, scope, appresources, dialogwindow, centris;
 	
 	dialogwindow = {
 		data: undefined,
@@ -18,6 +29,15 @@ describe("SellersController", function() {
 				    fn(ret);
 			    }
 			};
+		}
+	};
+	
+	centris = {
+		success: function(msg) {
+			
+		},
+		error: function(msg) {
+			
 		}
 	};
 	
@@ -39,7 +59,8 @@ describe("SellersController", function() {
 			controller = $controller("SellersController", {
 				$scope: scope,
 				AppResource: appresources,
-				DialogWindow: dialogwindow
+				SellerDlg: dialogwindow,
+				centrisNotify: centris
 			});
 	
 		}));
@@ -140,7 +161,7 @@ describe("SellersController", function() {
 	describe("SellersController appresource failure", function() {
 		
 		beforeEach(inject(function($controller, $rootScope, $injector) {
-	
+			
 			scope = $rootScope.$new();
 			appresources = $injector.get("AppResource");
 			
@@ -155,7 +176,8 @@ describe("SellersController", function() {
 			controller = $controller("SellersController", {
 				$scope: scope,
 				AppResource: appresources,
-				DialogWindow: dialogwindow
+				SellerDlg: dialogwindow,
+				centrisNotify: centris
 			});
 	
 		}));

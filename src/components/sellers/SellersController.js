@@ -22,8 +22,6 @@ function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 		});
 	};
 
-
-
 	$scope.add = function() {
 		SellerDlg.show().then(function(seller) {
 			var result = AppResource.addSeller(seller);
@@ -54,8 +52,6 @@ function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 			}
 		});
 	};
-	
-
 	
 	initialize();
 	
