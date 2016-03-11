@@ -10,12 +10,13 @@
 
 
 </head>
-
+		<div ng-controller="navbarController" ng-include="'src/components/nav-bar/navbar.html'" class="margin-bot"></div>
 	<main class="container-fluid">
 		<div class="Main clearfix" ng-view id="content"></div>
 	</main>
 
 	<toaster-container></toaster-container>
+
 	<!-- inject:vendor:js -->
 	<!-- endinject -->
 
