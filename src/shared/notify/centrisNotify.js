@@ -70,6 +70,9 @@ function(toastr, toastrConfig, $translate, $rootScope) {
 		} else if (type === "error") {
 			toastr.error(message, title, options);
 		}
+			else if(type === "warning") {
+				toastr.warning(message, title, options);
+			}
 	}
 
 	// Declare the function which takes care of the actual notification:
@@ -124,11 +127,17 @@ function(toastr, toastrConfig, $translate, $rootScope) {
 		error: function error(messageKey, titleKey) {
 			notificationFunction("error", titleKey, messageKey);
 		},
+		warning: function warning(messageKey, titleKey) {
+			notificationFunction("warning", titleKey, messageKey);
+		},
 		successWithParam: function successWithParam(messageKey, param) {
 			notificationFunctionWithParam("success", messageKey, param);
 		},
 		errorWithParam: function errorWithParam(messageKey, param) {
 			notificationFunctionWithParam("error", messageKey, param);
+		},
+		warningWithParam: function warningWithParam(messageKey, param) {
+			notificationFunctionWithParam("warning", messageKey, param);
 		},
 
 		// This function only comes in the "success" variation, since

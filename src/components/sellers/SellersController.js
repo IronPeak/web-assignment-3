@@ -29,7 +29,7 @@ function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 			var result = AppResource.addSeller(seller);
 			if(result !== undefined) {
 				result.success(function(s) {
-					centrisNotify.success("sellers.Messages.SaveSucceeded");
+					centrisNotify.success("sellers.Messages.SaveSucceeded"); 
 					$scope.refreshSellers();			
 					initialize();
 				}).error(function() {
