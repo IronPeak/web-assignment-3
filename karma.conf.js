@@ -10,7 +10,8 @@ module.exports = function(config) {
     plugins : [
         'karma-chrome-launcher',
         'karma-jasmine',
-        'karma-coverage'
+        'karma-coverage', 
+		'karma-ng-html2js-preprocessor' 
     ],
 
     // frameworks to use
@@ -30,7 +31,10 @@ module.exports = function(config) {
       'src/shared/app.js',
       'src/shared/**/*.js',
       'src/app.js',
-      'src/components/**/*.js'
+      'src/components/**/*.js',
+	  
+	  // templates
+	  'src/components/product/product.html'
     ],
 
 
@@ -44,7 +48,8 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'src/app.js': 'coverage',
-      'src/components/**/*.js': 'coverage'
+      'src/components/**/*.js': 'coverage',
+	  'src/**/*.html': ['ng-html2js']
     },
 
 
@@ -79,6 +84,7 @@ module.exports = function(config) {
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: true,
+	
 
     coverageReporter: {
       type : 'html',
