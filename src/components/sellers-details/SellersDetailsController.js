@@ -8,10 +8,15 @@ angular.module("project3App").controller("SellersDetailsController",
 		$scope.sellerName = '';
 		$scope.sellerCategory = '';
 		$scope.sellerImg = '';
+
+		$scope.products = [];
+
 		initializeDetails();
+		initializeProducts();
 
 		function initializeDetails() {
 			var result = AppResource.getSellerDetails($scope.id);
+			var a = AppResource.getSellerProducts($scope.id);
 			if(result !== undefined) {
 				result.success(function(s) {
 				$scope.sellerName = s.name;
@@ -24,6 +29,19 @@ angular.module("project3App").controller("SellersDetailsController",
 			}
 		}
 
+		function initializeProducts() {
+			var result = AppResource.getSellerProducts($scope.id);
+			if(result !== undefined) {
+				result.success(function(s) {
+				$scope.products = s;
+				//Toastr ??
+				}).error(function() {
+					centrisNotify.error("sellers.Messages.LoadFailedDetails");
+				});
+			}
+		}
+
+		
 
 
 			

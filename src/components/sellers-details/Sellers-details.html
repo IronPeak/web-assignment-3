@@ -16,4 +16,26 @@
 
 </div>
 
-<div ng-controller="productController" ng-include="'src/components/product/product.html'"></div>
+ <uib-tabset active="active">
+<uib-tab index="1" select="alertMe()">
+      <uib-tab-heading>
+        Product
+      </uib-tab-heading>
+      <div ng-repeat="product in products">
+<product product="product"> </product>
+</div>
+    </uib-tab>
+    <uib-tab index="2" select="alertMe()">
+      <uib-tab-heading>
+      	Top Products
+	      </uib-tab-heading>
+	      TODO Display TopProducts
+    </uib-tab>
+  </uib-tabset>
+
+
+
+
+
+
+</div>
