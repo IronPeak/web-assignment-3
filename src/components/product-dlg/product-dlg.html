@@ -7,43 +7,44 @@
                     </div>
                     <div class="modal-body" style="padding:40px 50px;">
 
-                                                <form>
+                        <form name="productform">
                             <div class="form-group">
                                 <label for="id">
                                     </span> Id</label>
-                                <input type="text" class="form-control" id="id" ng-model="product.id" placeholder="Unique ID">
+                                <input type="text" class="form-control" id="id" name="id" ng-model="product.id" placeholder="Unique ID" required>
                             </div>
                             <div class="form-group">
                                 <label for="name">
                                     </span> Name</label>
-                                <input type="text" class="form-control" id="name" ng-model="product.name" placeholder="Name">
+                                <input type="text" class="form-control" id="name" name="name" ng-model="product.name" placeholder="Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="category">
                                     </span> Category</label>
-                                <input type="text" class="form-control" id="category" ng-model="product.category" placeholder="Category">
+                                <input type="text" class="form-control" id="category" name="category" ng-model="product.category" placeholder="Category" required>
                             </div>
                             <div class="form-group">
                                 <label for="price">
                                     </span> Price</label>
-                                <input type="text" class="form-control" id="price" ng-model="product.price" placeholder="Price">
+                                <input type="text" class="form-control" id="price" name="price" ng-model="product.price" placeholder="Price" required>
                             </div>
                             <div class="form-group">
                                 <label for="quantitySold">
                                     </span> Quantity Sold</label>
-                                <input type="text" class="form-control" id="quantitySold" ng-model="product.quantitySold" placeholder="Number of sold units">
+                                <input type="text" class="form-control" id="quantitySold" name="quantitySold" ng-model="product.quantitySold" placeholder="Number of sold units" required>
                             </div>
                             <div class="form-group">
                                 <label for="quantityInStock">
                                     </span>Quantity In Stock</label>
-                                <input type="text" class="form-control" id="quantityInStock" ng-model="product.quantityInStock" placeholder="Number of units in stock">
+                                <input type="text" class="form-control" id="quantityInStock" name="quantityInStock" ng-model="product.quantityInStock" placeholder="Number of units in stock" required>
                             </div>
                             <div class="form-group">
                                 <label for="imagepath">
                                     </span> Imagepath</label>
-                                <input type="text" class="form-control" id="path" ng-model="product.imagePath" placeholder="An url to an image of the product">
+                                <input type="text" class="form-control" id="path" name="path" ng-model="product.imagePath" placeholder="An url to an image of the product" required>
                             </div>
-                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-click="onOk()"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
+                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-show="productform.$valid" ng-click="onOk()"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
+                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-hide="productform.$valid" disabled="disabled"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
                         </form>
                     </div>
                     <div class="modal-footer">

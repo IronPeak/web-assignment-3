@@ -7,28 +7,29 @@
                     </div>
                     <div class="modal-body" style="padding:40px 50px;">
 
-                        <form>
+                        <form name="sellerform">
                             <div class="form-group">
                                 <label for="id">
                                     </span> Id</label>
-                                <input type="text" class="form-control" id="id" ng-model="seller.id" placeholder="">
+                                <input type="text" class="form-control" id="id" name="id" ng-model="seller.id" placeholder="Unique ID" required>
                             </div>
                             <div class="form-group">
                                 <label for="name">
                                     </span> Name</label>
-                                <input type="text" class="form-control" id="name" ng-model="seller.name" placeholder="">
+                                <input type="text" class="form-control" id="name" name="name" ng-minlength="3" ng-maxlength="32" ng-model="seller.name" placeholder="Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="category">
                                     </span> Category</label>
-                                <input type="text" class="form-control" id="category" ng-model="seller.category" placeholder="">
+                                <input type="text" class="form-control" id="category" name="category" ng-minlength="3" ng-maxlength="24" ng-model="seller.category" placeholder="Category" required>
                             </div>
                             <div class="form-group">
                                 <label for="imagepath">
                                     </span> Imagepath</label>
-                                <input type="text" class="form-control" id="path" ng-model="seller.imagePath" placeholder="">
+                                <input type="text" class="form-control" id="path" name="path" ng-model="seller.imagePath" placeholder="An url to an image of the product" required>
                             </div>
-                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-click="onOk()"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
+                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-show="sellerform.$valid" ng-click="onOk()"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
+                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-hide="sellerform.$valid" disabled="disabled"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
                         </form>
 
                     </div>
