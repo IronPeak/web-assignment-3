@@ -4,15 +4,18 @@ angular.module("project3App").controller("SellersController",
 function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 	
 	function initialize() {
+		$scope.initalizeSeller();
+		$scope.refreshSellers();
+	}
+	
+	$scope.initalizeSeller = function() {
 		$scope.seller = {
 			id: '',
 			name: '',
 			category: '',
 			imagePath: ''
 		};
-		
-		$scope.refreshSellers();
-	}
+	};
 	
 	$scope.refreshSellers = function() {
 		AppResource.getSellers().success(function(sellers) {
