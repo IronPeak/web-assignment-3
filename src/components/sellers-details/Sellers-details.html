@@ -2,11 +2,15 @@
 <div class="sellerdetails">
 
 	<div class="left">
-		<img src="{{sellerImg}}" alt="HTML5 Icon" style="width:150px;height:150px;">
+		<img src="{{seller.imagePath}}" alt="HTML5 Icon" style="width:150px;height:150px;">
 		<div class="details">
-			<h4> <span translate="sellers.Name"></span>: {{sellerName}}</h4>
-			<h4> <span translate="sellers.Category"></span>: {{sellerCategory}} </h4>
+			<h4> <span translate="sellers.Name"></span>: {{seller.name}}</h4>
+			<h4> <span translate="sellers.Category"></span>: {{seller.category}} </h4>
 		</div>
+
+	<button type="button" class="btn btn-default btn-lg" id="add-button" ng-click="add()"><span id="glyph-add" class="glyphicon glyphicon-plus-sign"></span>
+        </button>
+
 	</div>
 
 
@@ -16,26 +20,21 @@
 
 </div>
 
- <uib-tabset active="active">
-<uib-tab index="1" select="alertMe()">
-      <uib-tab-heading>
-        Product
-      </uib-tab-heading>
-      <div ng-repeat="product in products">
-<product product="product"> </product>
-</div>
-    </uib-tab>
-    <uib-tab index="2" select="alertMe()">
-      <uib-tab-heading>
-      	Top Products
+	 <uib-tabset active="active">
+	<uib-tab index="1" select="alertMe()">
+	      <uib-tab-heading>
+	        Product
 	      </uib-tab-heading>
-	      TODO Display TopProducts
-    </uib-tab>
-  </uib-tabset>
-
-
-
-
-
+	      <div ng-repeat="product in products">
+	<product product="product"> </product>
+	</div>
+	    </uib-tab>
+	    <uib-tab index="2" select="alertMe()">
+	      <uib-tab-heading>
+	      	Top Products
+		      </uib-tab-heading>
+		      TODO Display TopProducts
+	    </uib-tab>
+	  </uib-tabset>
 
 </div>

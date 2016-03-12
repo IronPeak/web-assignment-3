@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellersDetailsController",
-	function SellersDetailsController($scope, AppResource, centrisNotify, $routeParams) {
+	function SellersDetailsController($scope, AppResource, centrisNotify, $routeParams, ProductDlg) {
 
 		$scope.seller = {
 			id: parseInt($routeParams.id),
@@ -14,6 +14,8 @@ angular.module("project3App").controller("SellersDetailsController",
 
 		initializeDetails();
 		initializeProducts();
+
+
 
 		function initializeDetails() {
 			var result = AppResource.getSellerDetails($scope.seller.id);
