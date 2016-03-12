@@ -52,6 +52,12 @@ describe("SellersDetailsController", function() {
 			expect(scope.seller).toEqual(seller);
 			
 		});
+		
+		it("constructor should define products", function() {
+			
+			expect(scope.products).not.toBe(undefined);
+			
+		});
 	
 	});
 	
@@ -88,7 +94,13 @@ describe("SellersDetailsController", function() {
 			
 		}));
 	
-		it("constructor should define seller", function() {
+		it("constructor seller should centrisnotify error", function() {
+			
+			expect(centrisnotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailedDetails");
+			
+		});
+		
+		it("constructor products should centrisnotify error", function() {
 			
 			expect(centrisnotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailedDetails");
 			

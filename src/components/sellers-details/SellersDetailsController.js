@@ -1,13 +1,14 @@
 "use strict";
 
 angular.module("project3App").controller("SellersDetailsController",
-	function SellersDetailsController($scope, AppResource, SellerDlg, centrisNotify, $routeParams) {
+	function SellersDetailsController($scope, AppResource, centrisNotify, $routeParams) {
 
-		$scope.id = parseInt($routeParams.id);
-
-		$scope.sellerName = '';
-		$scope.sellerCategory = '';
-		$scope.sellerImg = '';
+		$scope.seller = {
+			id: parseInt($routeParams.id),
+			name: '',
+			category: '',
+			imagePath: ''
+		};
 
 		$scope.products = [];
 
@@ -15,36 +16,34 @@ angular.module("project3App").controller("SellersDetailsController",
 		initializeProducts();
 
 		function initializeDetails() {
-			var result = AppResource.getSellerDetails($scope.id);
-			var a = AppResource.getSellerProducts($scope.id);
+			var result = AppResource.getSellerDetails($scope.seller.id);
 			if(result !== undefined) {
 				result.success(function(s) {
-				$scope.sellerName = s.name;
-				$scope.sellerCategory = s.category;
-				$scope.sellerImg = s.imagePath;
-				//Toastr ??
+					$scope.seller.id = s.id;
+					$scope.seller.name = s.name;
+					$scope.seller.category = s.category;
+					$scope.seller.imagePath = s.imagePath;
+					//Toastr ??
 				}).error(function() {
 					centrisNotify.error("sellers.Messages.LoadFailedDetails");
 				});
+				return;
 			}
+			centrisNotify.error("sellers.Messages.LoadFailedDetails");
 		}
 
 		function initializeProducts() {
-			var result = AppResource.getSellerProducts($scope.id);
+			var result = AppResource.getSellerProducts($scope.seller.id);
 			if(result !== undefined) {
 				result.success(function(s) {
-				$scope.products = s;
-				//Toastr ??
+					$scope.products = s;
+					//Toastr ??
 				}).error(function() {
 					centrisNotify.error("sellers.Messages.LoadFailedDetails");
 				});
+				return;
 			}
+			centrisNotify.error("sellers.Messages.LoadFailedDetails");
 		}
-
-		
-
-
-			
-	
 
 	});
