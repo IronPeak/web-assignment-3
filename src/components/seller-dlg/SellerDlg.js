@@ -11,7 +11,7 @@ angular.module("project3App").factory("SellerDlg",
 						modalParam: function () {
 							return object;
 						}
-						}
+					}
 				});
 
 				return modalInstance.result;
