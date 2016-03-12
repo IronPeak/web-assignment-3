@@ -17,31 +17,33 @@ describe("SellersController", function() {
 	
 	var controller, scope, appresources, dialogwindow, centris;
 	
-	dialogwindow = {
-		data: undefined,
-		setData: function(d) {
-			this.data = d;
-		},
-		show: function(arg) {
-			var ret = this.data;
-			return {
-			    then: function(fn) {
-				    fn(ret);
-			    }
-			};
-		}
-	};
+	beforeEach(function () {
+		dialogwindow = {
+			data: undefined,
+			setData: function(d) {
+				this.data = d;
+			},
+			show: function(arg) {
+				var ret = this.data;
+				return {
+					then: function(fn) {
+						fn(ret);
+					}
+				};
+			}
+		};
+		
+		centris = {
+			success: function(msg) {
+				
+			},
+			error: function(msg) {
+				
+			}
+		};
+	});
 	
-	centris = {
-		success: function(msg) {
-			
-		},
-		error: function(msg) {
-			
-		}
-	};
-	
-	describe("SellersController appresource success", function() {
+	describe("AppResource success", function() {
 		
 		beforeEach(inject(function($controller, $rootScope, $injector) {
 	
@@ -158,7 +160,7 @@ describe("SellersController", function() {
 	
 	});
 	
-	describe("SellersController appresource failure", function() {
+	describe("AppResource failure", function() {
 		
 		beforeEach(inject(function($controller, $rootScope, $injector) {
 			
