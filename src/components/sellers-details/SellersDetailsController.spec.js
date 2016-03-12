@@ -108,4 +108,52 @@ describe("SellersDetailsController", function() {
 	
 	});
 	
+	describe("AppResource result undefined", function() {
+		
+		beforeEach(inject(function($controller) {
+			
+			routeparams = {
+				//An id that is not in the mock appresources
+				id: undefined
+			};
+			
+			centrisnotify = {
+				error: function(msg) {
+					
+				}
+			};
+			
+			spyOn(centrisnotify, "error");
+			
+			appresources.successLoadSellers = true;
+			appresources.successAddSeller = true;
+			appresources.successUpdateSeller = true;
+			appresources.successLoadSellerDetails = true;
+			appresources.successGetSellerProducts = true;
+			appresources.successAddSellerProduct = true;
+			appresources.successUpdateSellerProduct = true;
+			
+			controller = $controller("SellersDetailsController", {
+				$scope: scope,
+				AppResource: appresources,
+				centrisNotify: centrisnotify,
+				$routeParams: routeparams
+			});
+			
+		}));
+	
+		it("constructor seller should centrisnotify error", function() {
+			
+			expect(centrisnotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailedDetails");
+			
+		});
+		
+		it("constructor products should centrisnotify error", function() {
+			
+			expect(centrisnotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailedDetails");
+			
+		});
+	
+	});
+	
 });
