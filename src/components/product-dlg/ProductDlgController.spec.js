@@ -1,6 +1,6 @@
 "use strict";
 
-describe("SellerDlgController", function() {
+describe("ProductDlgController", function() {
 	
 	beforeEach(module("project3App"));
 	
@@ -20,7 +20,7 @@ describe("SellerDlgController", function() {
 				var4: "string"
 			};
 		
-			controller = $controller("SellerDlgController", {
+			controller = $controller("ProductDlgController", {
 				$scope: scope,
 				modalParam: modal
 			});
@@ -70,7 +70,7 @@ describe("SellerDlgController", function() {
 			scope = $rootScope.$new();
 			modal = undefined;
 		
-			controller = $controller("SellerDlgController", {
+			controller = $controller("ProductDlgController", {
 				$scope: scope,
 				modalParam: modal
 			});
