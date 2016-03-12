@@ -70,13 +70,9 @@ describe("SellersDetailsController", function() {
 			};
 			
 			centrisnotify = {
-				error: function(msg) {
-					
-				}
+				error: jasmine.createSpy('error')
 			};
-			
-			spyOn(centrisnotify, "error");
-			
+						
 			appresources.successLoadSellers = false;
 			appresources.successAddSeller = false;
 			appresources.successUpdateSeller = false;
@@ -118,13 +114,9 @@ describe("SellersDetailsController", function() {
 			};
 			
 			centrisnotify = {
-				error: function(msg) {
-					
-				}
+				error: jasmine.createSpy('error')
 			};
-			
-			spyOn(centrisnotify, "error");
-			
+						
 			appresources.successLoadSellers = true;
 			appresources.successAddSeller = true;
 			appresources.successUpdateSeller = true;

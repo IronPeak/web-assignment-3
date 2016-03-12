@@ -39,10 +39,7 @@ describe("SellerDlgController", function() {
 				category: "Cloths",
 				imagePath: "www.image.com/abc.jpg"
 			};
-			scope.$close = function(s) {
-				
-			};
-			spyOn(scope, "$close");
+			scope.$close = jasmine.createSpy('$close');
 			
 			scope.onOk();
 			
@@ -51,10 +48,7 @@ describe("SellerDlgController", function() {
 		
 		it("onCancel should call dismiss", function() {
 			
-			scope.$dismiss = function(s) {
-				
-			};
-			spyOn(scope, "$dismiss");
+			scope.$dismiss = jasmine.createSpy('$dismiss');
 			
 			scope.onCancel();
 			
@@ -85,10 +79,7 @@ describe("SellerDlgController", function() {
 				category: "Cloths",
 				imagePath: "www.image.com/abc.jpg"
 			};
-			scope.$close = function(s) {
-				
-			};
-			spyOn(scope, "$close");
+			scope.$close = jasmine.createSpy('$close');
 			
 			scope.onOk();
 			
@@ -97,10 +88,7 @@ describe("SellerDlgController", function() {
 		
 		it("onCancel should call dismiss", function() {
 			
-			scope.$dismiss = function(s) {
-				
-			};
-			spyOn(scope, "$dismiss");
+			scope.$dismiss = jasmine.createSpy('$dismiss');
 			
 			scope.onCancel();
 			
