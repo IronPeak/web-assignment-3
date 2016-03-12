@@ -2,6 +2,7 @@
 	"home" : {
 		"Home":				"Home",
 		"LanguageIs":		"Icelandic",
-		"LanguageEn":		"English"
+		"LanguageEn":		"English",
+		"Title":			"SellStuff"
 	}
 }
