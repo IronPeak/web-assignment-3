@@ -9,6 +9,7 @@
 		"View":						"View",
 		"Messages" : {
 			"LoadFailed":            "Failed to load the list of sellers",
+			"LoadFailedDetails":	 "Failed to load seller details",
 			"SaveSucceeded":         "The seller has been added successfully",
 			"SaveFailed":            "Unfortunately we could not add a new seller",
 			"EditFailed": 			"Unfortunately we could not edit a new seller",

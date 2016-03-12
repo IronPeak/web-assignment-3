@@ -6,6 +6,4 @@ angular.module("project3App").controller("navbarController",
 		$scope.changelanguage = function(object) {
 			$translate.use(object);
 		};
-
-
 	});

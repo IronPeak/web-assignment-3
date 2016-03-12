@@ -135,6 +135,7 @@ function AppResource() {
 
 		getSellerDetails: function(id) {
 			var seller;
+			
 			for (var i = 0; i < mockSellers.length; ++i) {
 				if (mockSellers[i].id === id) {
 					seller = mockSellers[i];
