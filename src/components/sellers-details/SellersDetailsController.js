@@ -3,19 +3,30 @@
 angular.module("project3App").controller("SellersDetailsController",
 	function SellersDetailsController($scope, AppResource, centrisNotify, $routeParams, ProductDlg) {
 
-		$scope.seller = {
-			id: parseInt($routeParams.id),
-			name: '',
-			category: '',
-			imagePath: ''
-		};
-
-		$scope.products = [];
-
+		initializeSeller();
+		initializeProduct();
 		initializeDetails();
 		initializeProducts();
+		
+		function initializeSeller() {
+			$scope.seller = {
+				id: parseInt($routeParams.id),
+				name: '',
+				category: '',
+				imagePath: ''
+			};
+		}
 
-
+		function initializeProduct() {
+			$scope.product = {
+				id: '',
+				name: '',
+				price: '',
+				quantitySold: '',
+				quantityInStock: '',
+				imagePath: ''
+			};
+		}
 
 		function initializeDetails() {
 			var result = AppResource.getSellerDetails($scope.seller.id);
@@ -31,6 +42,7 @@ angular.module("project3App").controller("SellersDetailsController",
 		}
 
 		function initializeProducts() {
+			$scope.products = [];
 			var result = AppResource.getSellerProducts($scope.seller.id);
 			result.success(function(s) {
 				$scope.products = s;
@@ -40,5 +52,36 @@ angular.module("project3App").controller("SellersDetailsController",
 			});
 			return;
 		}
+		
+		$scope.add = function() {
+			ProductDlg.show().then(function(product) {
+				var result = AppResource.addSellerProduct($scope.seller.id, product);
+				if(result !== undefined) {
+					result.success(function(s) {
+						centrisNotify.success("products.Messages.SaveSucceeded"); 
+						initializeProducts();
+						initializeProduct();
+					}).error(function() {
+						centrisNotify.error("products.Messages.SaveFailed");
+					});
+				}
+			});
+		};
+	
+		$scope.update = function(product) {
+			var oldProduct = $.extend({}, product);
+			ProductDlg.show(oldProduct).then(function(updated) {
+				var result = AppResource.updateSellerProduct($scope.seller.id, updated);
+				if(result !== undefined) {
+					result.success(function(s) {
+						centrisNotify.success("products.Messages.EditSucceded");
+						initializeProducts();
+						initializeProduct();
+					}).error(function() {
+						centrisNotify.error("products.Messages.EditFailed");
+					});
+				}
+			});
+		};
 
 	});

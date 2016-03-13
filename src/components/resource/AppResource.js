@@ -189,7 +189,7 @@ function AppResource() {
 			var current;
 			if (mockResource.successUpdateSellerProduct) {
 				for(var i = 0; i < mockProducts.length; i++) {
-					if(mockProducts[i].id === id) {
+					if(mockProducts[i].id === id && mockProducts[i].product.id === product.id) {
 						mockProducts[i].product = product;
 						current = mockProducts[i];
 						break;
