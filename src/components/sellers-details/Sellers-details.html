@@ -26,7 +26,7 @@
 	        <span translate="products.Product"></span>
 	      </uib-tab-heading>
 	      <div ng-repeat="product in products">
-			<product product="product" ng-click="view(product)"> </product>
+			<product product="product" on-view="view(product)" on-edit="update(product)"> </product>
 		  </div>
 	    </uib-tab>
 	    <uib-tab index="2" select="alertMe()">
