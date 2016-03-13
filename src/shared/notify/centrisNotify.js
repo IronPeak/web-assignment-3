@@ -33,118 +33,122 @@
  *
  */
 angular.module("sharedServices").factory("centrisNotify",
-function(toastr, toastrConfig, $translate, $rootScope) {
-	var durationMSec = 10000;
-	var defaultTitle = "Centris";
+    function(toastr, toastrConfig, $translate, $rootScope) {
+        var durationMSec = 10000;
+        var defaultTitle = "Centris";
 
-	// Is this the correct place for this? Perhaps not. But we
-	// want the code to be DRY, and we don't want to
-	// repeat this. I.e. there is a support for undo in our
-	// custom template (that is the purpose of it!), and
-	// there must be a common event handler for the undo.
-	// This is as good place as any other (probably better),
-	// but if a better place will be found, please move this function!
-	$rootScope.centrisUndo = function centrisUndo(type, id) {
-		$rootScope.$broadcast("centrisUndo", {type: type, id: id});
-	};
+        // Is this the correct place for this? Perhaps not. But we
+        // want the code to be DRY, and we don't want to
+        // repeat this. I.e. there is a support for undo in our
+        // custom template (that is the purpose of it!), and
+        // there must be a common event handler for the undo.
+        // This is as good place as any other (probably better),
+        // but if a better place will be found, please move this function!
+        $rootScope.centrisUndo = function centrisUndo(type, id) {
+            $rootScope.$broadcast("centrisUndo", {
+                type: type,
+                id: id
+            });
+        };
 
-	// Load the title to the notification from language files.
-	// Since the factory will probably be created at startup,
-	// the language files may or may not be properly loaded.
-	// Therefore, we use the promise version.
-	$translate("NotificationTitle").then(function(value) {
-		defaultTitle = value;
-	});
+        // Load the title to the notification from language files.
+        // Since the factory will probably be created at startup,
+        // the language files may or may not be properly loaded.
+        // Therefore, we use the promise version.
+        $translate("NotificationTitle").then(function(value) {
+            defaultTitle = value;
+        });
 
-	function displayMessage(type, message, title) {
-		var options = {
-			timeOut: durationMSec
-		};
+        function displayMessage(type, message, title) {
+            var options = {
+                timeOut: durationMSec
+            };
 
-		// In case the previous toast was an undo toast,
-		// which overrode the template path:
-		toastrConfig.templates.toast = "shared/notify/centris-notify.tpl.html";
+            // In case the previous toast was an undo toast,
+            // which overrode the template path:
+            toastrConfig.templates.toast = "shared/notify/centris-notify.tpl.html";
 
-		if (type === "success") {
-			toastr.success(message, title, options);
-		} else if (type === "error") {
-			toastr.error(message, title, options);
-		}
-			else if(type === "warning") {
-				toastr.warning(message, title, options);
-			}
-	}
+            if (type === "success") {
+                toastr.success(message, title, options);
+            } else if (type === "error") {
+                toastr.error(message, title, options);
+            } else if (type === "warning") {
+                toastr.warning(message, title, options);
+            }
+        }
 
-	// Declare the function which takes care of the actual notification:
-	var notificationFunction = function notificationFunction(type, titleKey, messageKey) {
-		var message = $translate.instant(messageKey);
-		var title   = defaultTitle;
+        // Declare the function which takes care of the actual notification:
+        var notificationFunction = function notificationFunction(type, titleKey, messageKey) {
+            var message = $translate.instant(messageKey);
+            var title = defaultTitle;
 
-		if (titleKey !== undefined) {
-			title = $translate.instant(titleKey);
-		}
+            if (titleKey !== undefined) {
+                title = $translate.instant(titleKey);
+            }
 
-		displayMessage(type, message, title);
-	};
+            displayMessage(type, message, title);
+        };
 
-	var displayMessageWithUndo = function displayMessageWithUndo(message, undoID) {
-		var options = {
-			timeOut: durationMSec
-		};
+        var displayMessageWithUndo = function displayMessageWithUndo(message, undoID) {
+            var options = {
+                timeOut: durationMSec
+            };
 
-		// Slight hack, but hopefully the library will be able to
-		// officcially support per-toast templates in later versions
-		toastrConfig.templates.toast = "shared/notify/centris-notify-undo.tpl.html";
+            // Slight hack, but hopefully the library will be able to
+            // officcially support per-toast templates in later versions
+            toastrConfig.templates.toast = "shared/notify/centris-notify-undo.tpl.html";
 
-		// HACK! Because toastr doesn't allow us to pass in
-		// any "Item Data" (see MFC CListCtrl), we need to
-		// "sneak" the undoID in somehow differently. Since
-		// our custom template hardcodes the title, we
-		// don't need to use that parameter, and can pass the
-		// undoID in there instead!
-		toastr.success(undoID, message, options);
-		// Oh and this is also very hackish, we need to switch
-		// the title and the message because of some logic
-		// in the library (sigh)
-	};
+            // HACK! Because toastr doesn't allow us to pass in
+            // any "Item Data" (see MFC CListCtrl), we need to
+            // "sneak" the undoID in somehow differently. Since
+            // our custom template hardcodes the title, we
+            // don't need to use that parameter, and can pass the
+            // undoID in there instead!
+            toastr.success(undoID, message, options);
+            // Oh and this is also very hackish, we need to switch
+            // the title and the message because of some logic
+            // in the library (sigh)
+        };
 
-	var notificationFunctionWithParam = function notificationFunctionWithParam(type, messageKey, param) {
-		$translate(messageKey, { value: param }).then( function(msg) {
-			displayMessage(type, msg, defaultTitle);
-		});
-	};
+        var notificationFunctionWithParam = function notificationFunctionWithParam(type, messageKey, param) {
+            $translate(messageKey, {
+                value: param
+            }).then(function(msg) {
+                displayMessage(type, msg, defaultTitle);
+            });
+        };
 
-	var notificationFunctionWithUndo = function notificationFunctionWithUndo(messageKey, undoID) {
-		$translate(messageKey).then(function(msg) {
-			displayMessageWithUndo(msg, undoID);
-		});
-	};
+        var notificationFunctionWithUndo = function notificationFunctionWithUndo(messageKey, undoID) {
+            $translate(messageKey).then(function(msg) {
+                displayMessageWithUndo(msg, undoID);
+            });
+        };
 
-	return {
-		success: function success(messageKey, titleKey) {
-			notificationFunction("success", titleKey, messageKey);
-		},
-		error: function error(messageKey, titleKey) {
-			notificationFunction("error", titleKey, messageKey);
-		},
-		warning: function warning(messageKey, titleKey) {
-			notificationFunction("warning", titleKey, messageKey);
-		},
-		successWithParam: function successWithParam(messageKey, param) {
-			notificationFunctionWithParam("success", messageKey, param);
-		},
-		errorWithParam: function errorWithParam(messageKey, param) {
-			notificationFunctionWithParam("error", messageKey, param);
-		},
-		warningWithParam: function warningWithParam(messageKey, param) {
-			notificationFunctionWithParam("warning", messageKey, param);
-		},
+        return {
+            success: function success(messageKey, titleKey) {
+                notificationFunction("success", titleKey, messageKey);
+            },
+            error: function error(messageKey, titleKey) {
+                notificationFunction("error", titleKey, messageKey);
+            },
+            warning: function warning(messageKey, titleKey) {
+                notificationFunction("warning", titleKey, messageKey);
+            },
+            successWithParam: function successWithParam(messageKey, param) {
+                notificationFunctionWithParam("success", messageKey, param);
+            },
+            errorWithParam: function errorWithParam(messageKey, param) {
+                notificationFunctionWithParam("error", messageKey, param);
+            },
+            warningWithParam: function warningWithParam(messageKey, param) {
+                notificationFunctionWithParam("warning", messageKey, param);
+            },
 
-		// This function only comes in the "success" variation, since
-		// we hardly need undo support for messages which only
-		// display error messages, do we?
-		successWithUndo: function successWithUndo(messageKey, undoID) {
-			notificationFunctionWithUndo(messageKey, undoID);
-		}
-	};
-});
+            // This function only comes in the "success" variation, since
+            // we hardly need undo support for messages which only
+            // display error messages, do we?
+            successWithUndo: function successWithUndo(messageKey, undoID) {
+                notificationFunctionWithUndo(messageKey, undoID);
+            }
+        };
+    });
