@@ -28,13 +28,13 @@
                                     <span translate="seller-dlg.ImagePath"></span></label>
                                 <input type="text" class="form-control" id="path" name="path" ng-model="seller.imagePath" placeholder="{{ 'seller-dlg.ImagePathDisc' | translate }}" required>
                             </div>
-                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-show="sellerform.$valid" ng-click="onOk()"><span class="glyphicon glyphicon-plus-sign"></span> Ok</button>
-                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-hide="sellerform.$valid" disabled="disabled"><span class="glyphicon glyphicon-plus-sign"></span> Ok</button>
+                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-show="sellerform.$valid" ng-click="onOk()"><span class="glyphicon glyphicon-plus-sign"> </span> Ok</button>
+                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-hide="sellerform.$valid" disabled="disabled"><span class="glyphicon glyphicon-plus-sign"> </span> Ok</button>
                         </form>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal" ng-click="onCancel()"><span class="glyphicon glyphicon-remove"><span translate="seller-dlg.Cancel"> </span></button>
+                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal" ng-click="onCancel()"><span class="glyphicon glyphicon-remove"> <span translate="seller-dlg.Cancel"> </span></button>
                     </div>
                 </div>
 

@@ -1,0 +1,11 @@
+{
+	"product-dlg" : {
+		"Name":                      "Name",
+		"ImagePath": 				"Image Path",
+		"Cancel":					"Cancel",
+		"Price":					"Price",
+		"QuantitySold": 			"Quantity Sold",
+		"QuantityInStock": 			"Quantity in Stock",
+		"ImagePathDisc":			"An url to an image of the product"
+	}
+}
