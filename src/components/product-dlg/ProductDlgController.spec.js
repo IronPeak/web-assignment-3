@@ -28,12 +28,12 @@ describe("ProductDlgController", function() {
 		}));
 		
 		it("constructor should set scope seller to modal", function() {
-			expect(scope.seller).toBe(modal);
+			expect(scope.product).toBe(modal);
 		});
 		
 		it("onOk should call close with scope seller", function() {
 			
-			scope.seller = {
+			scope.product = {
 				id: 3,
 				name: "Hrafn Orri",
 				category: "Cloths",
@@ -43,7 +43,7 @@ describe("ProductDlgController", function() {
 			
 			scope.onOk();
 			
-			expect(scope.$close).toHaveBeenCalledWith(scope.seller);
+			expect(scope.$close).toHaveBeenCalledWith(scope.product);
 		});
 		
 		it("onCancel should call dismiss", function() {
@@ -73,7 +73,7 @@ describe("ProductDlgController", function() {
 		
 		it("onOk should call close with scope seller", function() {
 			
-			scope.seller = {
+			scope.product = {
 				id: 3,
 				name: "Hrafn Orri",
 				category: "Cloths",
@@ -83,7 +83,7 @@ describe("ProductDlgController", function() {
 			
 			scope.onOk();
 			
-			expect(scope.$close).toHaveBeenCalledWith(scope.seller);
+			expect(scope.$close).toHaveBeenCalledWith(scope.product);
 		});
 		
 		it("onCancel should call dismiss", function() {
