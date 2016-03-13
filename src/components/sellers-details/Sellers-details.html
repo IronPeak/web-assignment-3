@@ -23,7 +23,7 @@
 	 <uib-tabset active="active">
 	<uib-tab index="1" select="alertMe()">
 	      <uib-tab-heading>
-	        Product
+	        <span translate="products.Product"></span>
 	      </uib-tab-heading>
 	      <div ng-repeat="product in products">
 			<product product="product" ng-click="view(product)"> </product>
@@ -31,7 +31,7 @@
 	    </uib-tab>
 	    <uib-tab index="2" select="alertMe()">
 	      <uib-tab-heading>
-	      	Top Products
+	      	<span translate="products.TopProduct"></span>
 		      </uib-tab-heading>
 		      <div ng-repeat="product in topProducts">
 				<product product="product" on-view="view(product)" on-edit="update(product)"> </product>

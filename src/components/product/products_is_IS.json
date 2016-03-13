@@ -6,6 +6,8 @@
 		"Edit": 				"Breyta",
 		"QuantitySold": 			"Fjöldi Seldur",
 		"QuantityInStock": 			"Fjöldi á lager",
+		"Product": 					"Vara",
+		"TopProduct": 					"Vinsælustu Vörurnar",
 		"Messages" : {
 			"LoadFailed":            "Ekki tókst að sækja lista yfir vörur",
 			"LoadFailedDetails":	"Ekki tókst að sækja vörur",
