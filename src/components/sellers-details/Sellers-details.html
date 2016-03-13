@@ -33,7 +33,9 @@
 	      <uib-tab-heading>
 	      	Top Products
 		      </uib-tab-heading>
-		      TODO Display TopProducts
+		      <div ng-repeat="product in topProducts">
+				<product product="product"> </product>
+			  </div>
 	    </uib-tab>
 	  </uib-tabset>
 

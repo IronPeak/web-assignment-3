@@ -5,7 +5,7 @@ function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 	
 	function initialize() {
 		$scope.sellers = [];
-		$scope.sortoption = "NameDesc";
+		$scope.sortoption = "NameAsc";
 		$scope.initalizeSeller();
 		$scope.refreshSellers();
 		$scope.sortSellers($scope.sortoption);

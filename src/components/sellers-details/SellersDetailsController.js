@@ -8,6 +8,7 @@ angular.module("project3App").controller("SellersDetailsController",
 			$scope.initializeProduct();
 			$scope.initializeDetails();
 			$scope.initializeProducts();
+			$scope.initializeTopProducts();
 		}
 		
 		$scope.initializeSeller = function() {
@@ -53,6 +54,20 @@ angular.module("project3App").controller("SellersDetailsController",
 				centrisNotify.error("sellers.Messages.LoadFailedDetails");
 			});
 			return;
+		};
+		
+		$scope.initializeTopProducts = function() {
+			$scope.topProducts = $scope.products.slice(0);
+			$scope.topProducts.sort(function(p1, p2) {
+				if (p1.quantitySold < p2.quantitySold) {
+					return 1;
+				} else if (p1.quantitySold > p2.quantitySold) {
+					return -1;
+				} else {
+					return 0;
+				}
+			});
+			$scope.topProducts = $scope.topProducts.slice(0, 10);
 		};
 		
 		$scope.add = function() {
