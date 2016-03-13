@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellersDetailsController",
-	function SellersDetailsController($scope, AppResource, centrisNotify, $routeParams, ProductDlg) {
+	function SellersDetailsController($scope, AppResource, centrisNotify, $routeParams, ProductDlg, ProductViewDlg) {
 
 		function initalize() {
 			$scope.initializeSeller();
@@ -105,7 +105,7 @@ angular.module("project3App").controller("SellersDetailsController",
 		
 		$scope.view = function(product) {
 			var oldProduct = $.extend({}, product);
-			ProductDlg.show(oldProduct).then(function(updated) {
+			ProductViewDlg.show(oldProduct).then(function(updated) {
 				var result = AppResource.updateSellerProduct($scope.seller.id, updated);
 				if(result !== undefined) {
 					result.success(function(s) {

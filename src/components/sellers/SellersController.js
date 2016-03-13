@@ -28,9 +28,9 @@ function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 	};
 	
 	$scope.compareNameAsc = function(s1, s2) {
-		if (s1.name < s2.name) {
+		if (s1.name.toLowerCase() < s2.name.toLowerCase()) {
 			return -1;
-		} else if (s1.name > s2.name) {
+		} else if (s1.name.toLowerCase() > s2.name.toLowerCase()) {
 			return 1;
 		} else {
 			return 0;
@@ -42,9 +42,9 @@ function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 	};
 	
 	$scope.compareCategoryAsc = function(s1, s2) {
-		if (s1.category < s2.category) {
+		if (s1.category.toLowerCase() < s2.category.toLowerCase()) {
 			return -1;
-		} else if (s1.category > s2.category) {
+		} else if (s1.category.toLowerCase() > s2.category.toLowerCase()) {
 			return 1;
 		} else {
 			return 0;
