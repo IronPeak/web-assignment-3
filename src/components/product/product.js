@@ -9,7 +9,9 @@ angular.module("project3App").directive("product",
 			templateUrl: 'src/components/product/product.html',
 
 			scope : {
-				'product': '='
+				'product': '=',
+				'view': '&onView',
+				'edit': '&onEdit'
 			}
 		};
 

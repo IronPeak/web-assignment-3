@@ -78,6 +78,7 @@ angular.module("project3App").controller("SellersDetailsController",
 						centrisNotify.success("products.Messages.SaveSucceeded"); 
 						$scope.initializeProducts();
 						$scope.initializeProduct();
+						$scope.initializeTopProducts();
 					}).error(function() {
 						centrisNotify.error("products.Messages.SaveFailed");
 					});
@@ -94,8 +95,23 @@ angular.module("project3App").controller("SellersDetailsController",
 						centrisNotify.success("products.Messages.EditSucceeded");
 						$scope.initializeProducts();
 						$scope.initializeProduct();
+						$scope.initializeTopProducts();
 					}).error(function() {
 						centrisNotify.error("products.Messages.EditFailed");
+					});
+				}
+			});
+		};
+		
+		$scope.view = function(product) {
+			var oldProduct = $.extend({}, product);
+			ProductDlg.show(oldProduct).then(function(updated) {
+				var result = AppResource.updateSellerProduct($scope.seller.id, updated);
+				if(result !== undefined) {
+					result.success(function(s) {
+
+					}).error(function() {
+						
 					});
 				}
 			});

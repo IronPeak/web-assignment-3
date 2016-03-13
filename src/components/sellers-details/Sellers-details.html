@@ -26,15 +26,15 @@
 	        Product
 	      </uib-tab-heading>
 	      <div ng-repeat="product in products">
-	<product product="product"> </product>
-	</div>
+			<product product="product" ng-click="view(product)"> </product>
+		  </div>
 	    </uib-tab>
 	    <uib-tab index="2" select="alertMe()">
 	      <uib-tab-heading>
 	      	Top Products
 		      </uib-tab-heading>
 		      <div ng-repeat="product in topProducts">
-				<product product="product"> </product>
+				<product product="product" on-view="view(product)" on-edit="update(product)"> </product>
 			  </div>
 	    </uib-tab>
 	  </uib-tabset>

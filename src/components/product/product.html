@@ -2,4 +2,6 @@
 	<img src="{{product.imagePath}}" alt="HTML5 Icon" style="width:100px;height:100px;">
 	<h4> <span translate ="products.Name"></span>: {{product.name}} </h4> 
 	<h4> <span translate ="products.Price"></span>: {{product.price}} </h4>
+	<a href="" class="btn btn-info product-view-button" ng-click="view({product: product})" role="button"><span translate="product.View"/></a>
+	<a href="" class="btn btn-info product-view-button" ng-click="edit({product: product})" role="button"><span translate="product.Edit"/></a>
 </div>
