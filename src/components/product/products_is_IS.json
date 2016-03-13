@@ -1,6 +1,8 @@
 {
 	"products" : {
 		"Name":				"Nafn",
-		"Price":				"Verð"
+		"Price":				"Verð",
+		"View": 				"Skoða",
+		"Edit": 				"Breyta"
 	}
 }

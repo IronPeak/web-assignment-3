@@ -1,6 +1,8 @@
 {
 	"products" : {
 		"Name":				"Name",
-		"Price":				"Price"
+		"Price":				"Price",
+		"View": 				"View",
+		"Edit": 				"Edit"
 	}
 }
