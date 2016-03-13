@@ -102,17 +102,7 @@ angular.module("project3App").controller("SellersDetailsController",
 		};
 		
 		$scope.view = function(product) {
-			var oldProduct = $.extend({}, product);
-			ProductViewDlg.show(oldProduct).then(function(updated) {
-				var result = AppResource.updateSellerProduct($scope.seller.id, updated);
-				if(result !== undefined) {
-					result.success(function(s) {
-
-					}).error(function() {
-						
-					});
-				}
-			});
+			ProductViewDlg.show(product);
 		};
 		
 		initalize();
