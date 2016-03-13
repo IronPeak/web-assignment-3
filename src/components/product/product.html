@@ -1,5 +1,5 @@
 <div class="col-md-2 product-details">
-	<img src="{{product.imagePath}}" alt="HTML5 Icon" style="width:100px;height:100px;">
+	<img ng-src="{{product.imagePath || 'https://pbs.twimg.com/profile_images/425274582581264384/X3QXBN8C.jpeg'}}" alt="{{ 'product.imagePath' | translate }}" style="width:100px;height:100px;">
 	<h4> <span translate ="products.Name"></span>: {{product.name}} </h4> 
 	<h4> <span translate ="products.Price"></span>: {{product.price}} </h4>
 	<a href="" class="btn btn-info product-view-button" ng-click="view({product: product})" role="button"><span class="glyphicon glyphicon-zoom-in"translate="products.View"/></a>
