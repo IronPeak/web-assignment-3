@@ -15,32 +15,6 @@ describe("SellersDetailsControllerTopProducts", function() {
 	
 	}));
 	
-	beforeEach(function () {
-		dialogwindow = {
-			data: undefined,
-			setData: function(d) {
-				this.data = d;
-			},
-			show: function(arg) {
-				var ret = this.data;
-				return {
-					then: function(fn) {
-						fn(ret);
-					}
-				};
-			}
-		};
-		
-		centrisnotify = {
-			success: function(msg) {
-				
-			},
-			error: function(msg) {
-				
-			}
-		};
-	});
-	
 	describe("AppResource Products", function() {
 		
 		beforeEach(inject(function($controller) {

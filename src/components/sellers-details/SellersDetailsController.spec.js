@@ -6,7 +6,7 @@ describe("SellersDetailsController", function() {
 	
 	beforeEach(module('translateNoop'));
 		
-	var controller, scope, appresources, centrisnotify, routeparams, dialogwindow;
+	var controller, scope, appresources, centrisnotify, routeparams, productdlg, productviewdlg;
 	
 	beforeEach(inject(function($rootScope, $injector) {
 	
@@ -16,7 +16,7 @@ describe("SellersDetailsController", function() {
 	}));
 	
 	beforeEach(function () {
-		dialogwindow = {
+		productdlg = {
 			data: undefined,
 			setData: function(d) {
 				this.data = d;
@@ -29,6 +29,10 @@ describe("SellersDetailsController", function() {
 					}
 				};
 			}
+		};
+		
+		productviewdlg = {
+			
 		};
 		
 		centrisnotify = {
@@ -62,7 +66,8 @@ describe("SellersDetailsController", function() {
 				AppResource: appresources,
 				centrisNotify: centrisnotify,
 				$routeParams: routeparams,
-				ProductDlg: dialogwindow
+				ProductDlg: productdlg,
+				ProductViewDlg: productviewdlg
 			});
 			
 		}));
@@ -97,7 +102,7 @@ describe("SellersDetailsController", function() {
 				imagePath: "images.com/abc.jpg"
 			};
 			
-			dialogwindow.setData(product);
+			productdlg.setData(product);
 			spyOn(appresources, "addSellerProduct");
 			
 			scope.add();
@@ -117,7 +122,7 @@ describe("SellersDetailsController", function() {
 			
 			spyOn(centrisnotify, "success");
 			
-			dialogwindow.setData(product);
+			productdlg.setData(product);
 			
 			scope.add();
 			
@@ -136,7 +141,7 @@ describe("SellersDetailsController", function() {
 			
 			spyOn(scope, "initializeProducts");
 			
-			dialogwindow.setData(product);
+			productdlg.setData(product);
 			
 			scope.add();
 			
@@ -162,7 +167,7 @@ describe("SellersDetailsController", function() {
 				imagePath: ''
 			};
 					
-			dialogwindow.setData(product);
+			productdlg.setData(product);
 			
 			scope.add();
 			
@@ -180,7 +185,7 @@ describe("SellersDetailsController", function() {
 				imagePath: "images.com/abc.jpg"
 			};
 			
-			dialogwindow.setData(product);
+			productdlg.setData(product);
 			spyOn(appresources, "updateSellerProduct");
 			
 			scope.update(product);
@@ -201,7 +206,7 @@ describe("SellersDetailsController", function() {
 			
 			spyOn(centrisnotify, "success");
 			
-			dialogwindow.setData(product);
+			productdlg.setData(product);
 			
 			scope.update(id);
 			
@@ -221,7 +226,7 @@ describe("SellersDetailsController", function() {
 			
 			spyOn(scope, "initializeProducts");
 			
-			dialogwindow.setData(product);
+			productdlg.setData(product);
 			
 			scope.update(product);
 			
@@ -248,7 +253,7 @@ describe("SellersDetailsController", function() {
 				imagePath: ''
 			};
 					
-			dialogwindow.setData(product);
+			productdlg.setData(product);
 			
 			scope.update(product);
 			
@@ -277,7 +282,8 @@ describe("SellersDetailsController", function() {
 				AppResource: appresources,
 				centrisNotify: centrisnotify,
 				$routeParams: routeparams,
-				ProductDlg: dialogwindow
+				ProductDlg: productdlg,
+				ProductViewDlg: productviewdlg
 			});
 			
 		}));
@@ -318,7 +324,8 @@ describe("SellersDetailsController", function() {
 				AppResource: appresources,
 				centrisNotify: centrisnotify,
 				$routeParams: routeparams,
-				ProductDlg: dialogwindow
+				ProductDlg: productdlg,
+				ProductViewDlg: productviewdlg
 			});
 			
 		}));
@@ -340,7 +347,7 @@ describe("SellersDetailsController", function() {
 				imagePath: "images.com/abc.jpg"
 			};
 			
-			dialogwindow.setData(product);
+			productdlg.setData(product);
 			
 			scope.add();
 			
@@ -358,11 +365,28 @@ describe("SellersDetailsController", function() {
 				imagePath: "images.com/abc.jpg"
 			};
 			
-			dialogwindow.setData(product);
+			productdlg.setData(product);
 			
 			scope.update(product);
 			
 			expect(centrisnotify.error).toHaveBeenCalledWith("products.Messages.EditFailed");
+		});
+		
+		it("view should show product in product view dialog", function() {
+			var product = {
+				id: 100,
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
+			};
+			
+			productviewdlg.show = jasmine.createSpy("show");
+			
+			scope.view(product);
+			
+			expect(productviewdlg.show).toHaveBeenCalledWith(product);
 		});
 		
 	});
@@ -390,7 +414,8 @@ describe("SellersDetailsController", function() {
 				AppResource: appresources,
 				centrisNotify: centrisnotify,
 				$routeParams: routeparams,
-				ProductDlg: dialogwindow
+				ProductDlg: productdlg,
+				ProductViewDlg: productviewdlg
 			});
 			
 		}));
@@ -418,7 +443,7 @@ describe("SellersDetailsController", function() {
 				imagePath: "images.com/abc.jpg"
 			};
 						
-			dialogwindow.setData(product);
+			productdlg.setData(product);
 			
 			scope.add();
 			
@@ -438,7 +463,7 @@ describe("SellersDetailsController", function() {
 				imagePath: "images.com/abc.jpg"
 			};
 						
-			dialogwindow.setData(product);
+			productdlg.setData(product);
 			
 			scope.update(product);
 			
@@ -469,7 +494,8 @@ describe("SellersDetailsController", function() {
 				AppResource: appresources,
 				centrisNotify: centrisnotify,
 				$routeParams: routeparams,
-				ProductDlg: dialogwindow
+				ProductDlg: productdlg,
+				ProductViewDlg: productviewdlg
 			});
 			
 		}));
