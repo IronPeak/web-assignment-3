@@ -1,6 +1,6 @@
 "use strict";
 
-describe("ProductDlgController", function() {
+describe("ProductViewDlgController", function() {
 	
 	beforeEach(module("project3App"));
 	
@@ -20,7 +20,7 @@ describe("ProductDlgController", function() {
 				var4: "string"
 			};
 		
-			controller = $controller("ProductDlgController", {
+			controller = $controller("ProductViewDlgController", {
 				$scope: scope,
 				modalParam: modal
 			});
@@ -29,21 +29,6 @@ describe("ProductDlgController", function() {
 		
 		it("constructor should set scope product to modal", function() {
 			expect(scope.product).toBe(modal);
-		});
-		
-		it("onOk should call close with scope product", function() {
-			
-			scope.product = {
-				id: 3,
-				name: "Hrafn Orri",
-				category: "Cloths",
-				imagePath: "www.image.com/abc.jpg"
-			};
-			scope.$close = jasmine.createSpy('$close');
-			
-			scope.onOk();
-			
-			expect(scope.$close).toHaveBeenCalledWith(scope.product);
 		});
 		
 		it("onCancel should call dismiss", function() {
@@ -64,27 +49,12 @@ describe("ProductDlgController", function() {
 			scope = $rootScope.$new();
 			modal = undefined;
 		
-			controller = $controller("ProductDlgController", {
+			controller = $controller("ProductViewDlgController", {
 				$scope: scope,
 				modalParam: modal
 			});
 		
 		}));
-		
-		it("onOk should call close with scope product", function() {
-			
-			scope.product = {
-				id: 3,
-				name: "Hrafn Orri",
-				category: "Cloths",
-				imagePath: "www.image.com/abc.jpg"
-			};
-			scope.$close = jasmine.createSpy('$close');
-			
-			scope.onOk();
-			
-			expect(scope.$close).toHaveBeenCalledWith(scope.product);
-		});
 		
 		it("onCancel should call dismiss", function() {
 			

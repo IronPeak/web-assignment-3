@@ -1,20 +1,20 @@
 "use strict";
 
-describe('factory: ProductDlg', function() {
+describe('factory: ProductViewDlg', function() {
 	
-    var productdlg, uibmodal;
+    var productviewdlg, uibmodal;
     
     beforeEach(module('project3App'));
 	
 	beforeEach(module('translateNoop'));
-    
+	    
     beforeEach(inject(function($injector) {
-        productdlg = $injector.get("ProductDlg");
+        productviewdlg = $injector.get("ProductViewDlg");
 		uibmodal = $injector.get("$uibModal");
     }));
 	
 	it("Should have show function defined", function() {			
-		expect(productdlg.show).not.toBe(undefined);
+		expect(productviewdlg.show).not.toBe(undefined);
 	});
 	
 	it("show object should set modalParam to return object", function() {			
@@ -32,7 +32,7 @@ describe('factory: ProductDlg', function() {
 			};
 		};
 		
-		productdlg.show(obj);
+		productviewdlg.show(obj);
 		expect(parameter.resolve.modalParam()).toBe(obj);
 	});
 	
