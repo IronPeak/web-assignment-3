@@ -1,6 +1,6 @@
 {
 	"product-dlg" : {
-		"Name":                      "Nafn",
+		"Name":                     "Nafn",
 		"ImagePath": 				"Mynd",
 		"Cancel":					"Loka",
 		"Price":					"Verð",
