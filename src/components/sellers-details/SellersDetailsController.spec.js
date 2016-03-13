@@ -323,9 +323,9 @@ describe("SellersDetailsController", function() {
 			
 		}));
 	
-		it("constructor should notify user if it fails to load seller details", function() {
+		it("constructor should notify user it failed to load seller details", function() {
 			
-			expect(centrisnotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailedDetails");
+			expect(centrisnotify.error).toHaveBeenCalledWith("seller.Messages.LoadFailedDetails");
 			
 		});
 		
@@ -397,13 +397,13 @@ describe("SellersDetailsController", function() {
 	
 		it("constructor seller should centrisnotify error", function() {
 			
-			expect(centrisnotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailedDetails");
+			expect(centrisnotify.error).toHaveBeenCalledWith("seller.Messages.LoadFailedDetails");
 			
 		});
 		
 		it("constructor products should centrisnotify error", function() {
 						
-			expect(centrisnotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailedDetails");
+			expect(centrisnotify.error).toHaveBeenCalledWith("seller.Messages.LoadFailedDetails");
 			
 		});
 		
