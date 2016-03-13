@@ -1,0 +1,11 @@
+{
+	"seller-dlg" : {
+		"Name":                      "Nafn",
+		"Category":					"Flokkur",
+		"ImagePath": 				"Mynd",
+		"Cancel":					"Loka",
+		"Edit":						"Breyta",
+		"ImagePathDisc":			"Vefslóð á mynd",
+		"Add" :						"Add"
+	}
+}
