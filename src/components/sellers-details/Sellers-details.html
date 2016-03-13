@@ -2,7 +2,7 @@
 <div class="sellerdetails">
 
 	<div class="left">
-		<img src="{{seller.imagePath}}" alt="HTML5 Icon" style="width:150px;height:150px;">
+		<img ng-src="{{seller.imagePath || 'https://pbs.twimg.com/profile_images/425274582581264384/X3QXBN8C.jpeg'}}" alt="{{ 'seller.imagePath' | translate }}" style="width:150px;height:150px;">
 		<div class="details">
 			<h4> <span translate="sellers.Name"></span>: {{seller.name}}</h4>
 			<h4> <span translate="sellers.Category"></span>: {{seller.category}} </h4>
