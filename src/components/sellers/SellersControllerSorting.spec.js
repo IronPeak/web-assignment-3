@@ -10,27 +10,11 @@ describe("SellersControllerSorting", function() {
 	
 	beforeEach(function () {
 		dialogwindow = {
-			data: undefined,
-			setData: function(d) {
-				this.data = d;
-			},
-			show: function(arg) {
-				var ret = this.data;
-				return {
-					then: function(fn) {
-						fn(ret);
-					}
-				};
-			}
+
 		};
 		
 		centris = {
-			success: function(msg) {
-				
-			},
-			error: function(msg) {
-				
-			}
+
 		};
 	});
 	
@@ -59,7 +43,8 @@ describe("SellersControllerSorting", function() {
 			scope.sellers = [
 			    {name: "Aron"},
 				{name: "Siggi"},
-				{name: "Bjarni"}
+				{name: "Bjarni"},
+				{name: "Siggi"}
 			];
 	
 		}));
@@ -74,14 +59,29 @@ describe("SellersControllerSorting", function() {
 			expect(scope.sellers[0].name).toEqual("Aron");
 			expect(scope.sellers[1].name).toEqual("Bjarni");
 			expect(scope.sellers[2].name).toEqual("Siggi");
+			expect(scope.sellers[3].name).toEqual("Siggi");
 		});
 		
 		it("Sort NameDesc should sort sellers reverse alphabetically by name", function() {
 			scope.sortSellers("NameDesc");
 			
 			expect(scope.sellers[0].name).toEqual("Siggi");
-			expect(scope.sellers[1].name).toEqual("Bjarni");
-			expect(scope.sellers[2].name).toEqual("Aron");
+			expect(scope.sellers[1].name).toEqual("Siggi");
+			expect(scope.sellers[2].name).toEqual("Bjarni");
+			expect(scope.sellers[3].name).toEqual("Aron");
+		});
+		
+		it("Other sorting options should not change the list", function() {
+			centris.error = jasmine.createSpy("error");
+			
+			scope.sortSellers("something");
+			
+			expect(scope.sellers[0].name).toEqual("Aron");
+			expect(scope.sellers[1].name).toEqual("Siggi");
+			expect(scope.sellers[2].name).toEqual("Bjarni");
+			expect(scope.sellers[3].name).toEqual("Siggi");
+			
+			expect(centris.error).toHaveBeenCalled();
 		});
 	
 	});
@@ -111,6 +111,7 @@ describe("SellersControllerSorting", function() {
 			scope.sellers = [
 			    {category: "Fatnaður"},
 				{category: "Matur"},
+				{category: "Matur"},
 				{category: "Egg og Mjólk"}
 			];
 	
@@ -126,14 +127,29 @@ describe("SellersControllerSorting", function() {
 			expect(scope.sellers[0].category).toEqual("Egg og Mjólk");
 			expect(scope.sellers[1].category).toEqual("Fatnaður");
 			expect(scope.sellers[2].category).toEqual("Matur");
+			expect(scope.sellers[3].category).toEqual("Matur");
 		});
 		
 		it("Sort CategoryDesc should sort sellers reverse alphabetically by category", function() {
 			scope.sortSellers("CategoryDesc");
 			
 			expect(scope.sellers[0].category).toEqual("Matur");
-			expect(scope.sellers[1].category).toEqual("Fatnaður");
-			expect(scope.sellers[2].category).toEqual("Egg og Mjólk");
+			expect(scope.sellers[1].category).toEqual("Matur");
+			expect(scope.sellers[2].category).toEqual("Fatnaður");
+			expect(scope.sellers[3].category).toEqual("Egg og Mjólk");
+		});
+		
+		it("Other sorting options should not change the list", function() {
+			centris.error = jasmine.createSpy("error");
+			
+			scope.sortSellers("something");
+			
+			expect(scope.sellers[0].category).toEqual("Fatnaður");
+			expect(scope.sellers[1].category).toEqual("Matur");
+			expect(scope.sellers[2].category).toEqual("Matur");
+			expect(scope.sellers[3].category).toEqual("Egg og Mjólk");
+			
+			expect(centris.error).toHaveBeenCalled();
 		});
 	
 	});
