@@ -36,7 +36,7 @@
                             <div class="form-group">
                                 <label for="imagepath">
                                    <span translate="product-dlg.ImagePath"></span></label>
-                                <input type="text" class="form-control" id="path" name="path" ng-model="product.imagePath" placeholder="{{ 'product-dlg.ImagePathDisc' | translate }}"  required>
+                                <input type="url" class="form-control" id="path" name="path" ng-model="product.imagePath" placeholder="{{ 'product-dlg.ImagePathDisc' | translate }}">
                             </div>
                             <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-show="productform.$valid" ng-click="onOk()"><span class="glyphicon glyphicon-plus-sign"></span> Ok</button>
                             <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-hide="productform.$valid" disabled="disabled"><span class="glyphicon glyphicon-plus-sign"></span> Ok</button>
