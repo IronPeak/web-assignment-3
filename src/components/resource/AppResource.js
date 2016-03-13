@@ -130,7 +130,7 @@ function AppResource() {
 						current = mockSellers[i];
 					}
 				}
-				if (current !== null) {
+				if (current !== undefined) {
 					current.name      = seller.name;
 					current.category  = seller.category;
 					current.imagePath = seller.imagePath;
