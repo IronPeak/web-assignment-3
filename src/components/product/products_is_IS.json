@@ -3,6 +3,9 @@
 		"Name":				"Nafn",
 		"Price":				"Verð",
 		"View": 				"Skoða",
-		"Edit": 				"Breyta"
+		"Edit": 				"Breyta",
+		"QuantitySold": 			"Fjöldi Seldur",
+		"QuantityInStock": 			"Fjöldi á lager"
+
 	}
 }

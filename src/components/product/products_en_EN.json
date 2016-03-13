@@ -3,6 +3,8 @@
 		"Name":				"Name",
 		"Price":				"Price",
 		"View": 				"View",
-		"Edit": 				"Edit"
+		"Edit": 				"Edit",
+		"QuantitySold": 			"Quantity Sold",
+		"QuantityInStock": 			"Quantity In Stock"
 	}
 }

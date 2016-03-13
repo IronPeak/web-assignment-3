@@ -38,7 +38,6 @@ angular.module("project3App").controller("SellersDetailsController",
 				$scope.seller.name = s.name;
 				$scope.seller.category = s.category;
 				$scope.seller.imagePath = s.imagePath;
-				//Toastr ??
 			}).error(function() {
 				centrisNotify.error("sellers.Messages.LoadFailedDetails");
 			});
@@ -49,7 +48,6 @@ angular.module("project3App").controller("SellersDetailsController",
 			var result = AppResource.getSellerProducts($scope.seller.id);
 			result.success(function(s) {
 				$scope.products = s;
-				//Toastr ??
 			}).error(function() {
 				centrisNotify.error("sellers.Messages.LoadFailedDetails");
 			});
