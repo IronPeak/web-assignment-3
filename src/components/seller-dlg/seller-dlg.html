@@ -15,26 +15,26 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">
-                                    </span> Name</label>
-                                <input type="text" class="form-control" id="name" name="name" ng-minlength="3" ng-maxlength="32" ng-model="seller.name" placeholder="Name" required>
+                                    <span translate="seller-dlg.Name"></span></label>
+                                <input type="text" class="form-control" id="name" name="name" ng-minlength="3" ng-maxlength="32" ng-model="seller.name" placeholder="{{ 'seller-dlg.Name' | translate }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="category">
-                                    </span> Category</label>
-                                <input type="text" class="form-control" id="category" name="category" ng-minlength="3" ng-maxlength="24" ng-model="seller.category" placeholder="Category" required>
+                                   <span translate="seller-dlg.Category"></span></label>
+                                <input type="text" class="form-control" id="category" name="category" ng-minlength="3" ng-maxlength="24" ng-model="seller.category" placeholder="{{ 'seller-dlg.Category' | translate }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="imagepath">
-                                    </span> Imagepath</label>
-                                <input type="text" class="form-control" id="path" name="path" ng-model="seller.imagePath" placeholder="An url to an image of the product" required>
+                                    <span translate="seller-dlg.ImagePath"></span></label>
+                                <input type="text" class="form-control" id="path" name="path" ng-model="seller.imagePath" placeholder="{{ 'seller-dlg.ImagePathDisc' | translate }}" required>
                             </div>
-                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-show="sellerform.$valid" ng-click="onOk()"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
-                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-hide="sellerform.$valid" disabled="disabled"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
+                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-show="sellerform.$valid" ng-click="onOk()"><span class="glyphicon glyphicon-plus-sign"></span> Ok</button>
+                            <button type="submit" id="saveSeller" class="btn btn-success btn-block" ng-hide="sellerform.$valid" disabled="disabled"><span class="glyphicon glyphicon-plus-sign"></span> Ok</button>
                         </form>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal" ng-click="onCancel()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal" ng-click="onCancel()"><span class="glyphicon glyphicon-remove"><span translate="seller-dlg.Cancel"> </span></button>
                     </div>
                 </div>
 
