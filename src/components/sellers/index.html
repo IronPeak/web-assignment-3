@@ -15,10 +15,26 @@
 				<thead>
 					<tr>
 						<th>
-							<span translate="sellers.Name"/>
+							<a href="" ng-show="sortoption == 'NameAsc'" ng-click="sortSellers('NameDesc')">
+								<span translate="sellers.Name"/>
+							</a>
+							<a href="" ng-show="sortoption == 'NameDesc'" ng-click="sortSellers('NameAsc')">
+								<span translate="sellers.Name"/>
+							</a>
+							<a href="" ng-hide="sortoption == 'NameAsc' || sortoption == 'NameDesc'" ng-click="sortSellers('NameAsc')">
+								<span translate="sellers.Name"/>
+							</a>
 						</th>
 						<th>
-							<span translate="sellers.Category" />
+							<a href="" ng-show="sortoption == 'CategoryAsc'" ng-click="sortSellers('CategoryDesc')">
+								<span translate="sellers.Category"/>
+							</a>
+							<a href="" ng-show="sortoption == 'CategoryDesc'" ng-click="sortSellers('CategoryAsc')">
+								<span translate="sellers.Category"/>
+							</a>
+							<a href="" ng-hide="sortoption == 'CategoryAsc' || sortoption == 'CategoryDesc'" ng-click="sortSellers('CategoryAsc')">
+								<span translate="sellers.Category"/>
+							</a>
 						</th>
 						<th class="seller-table-head-actions">
 						<span translate="sellers.Action" />

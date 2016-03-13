@@ -89,7 +89,7 @@ describe("SellersDetailsController", function() {
 		it("add should add product to appresources", function() {
 			var id = 1;
 			var product = {
-				id: '1',
+				id: 1,
 				name: 'productname',
 				price: 50,
 				quantitySold: 21,
@@ -107,7 +107,7 @@ describe("SellersDetailsController", function() {
 		
 		it("add should notify user", function() {
 			var product = {
-				id: '1',
+				id: 1,
 				name: 'productname',
 				price: 50,
 				quantitySold: 21,
@@ -126,7 +126,7 @@ describe("SellersDetailsController", function() {
 		
 		it("add should initalize products", function() {
 			var product = {
-				id: '1',
+				id: 1,
 				name: 'productname',
 				price: 50,
 				quantitySold: 21,
@@ -145,7 +145,7 @@ describe("SellersDetailsController", function() {
 		
 		it("add should reset scope product", function() {
 			var product = {
-				id: '1',
+				id: 1,
 				name: 'productname',
 				price: 50,
 				quantitySold: 21,
@@ -172,7 +172,7 @@ describe("SellersDetailsController", function() {
 		it("update should update product in appresources", function() {
 			var id = 1;
 			var product = {
-				id: '1',
+				id: 1,
 				name: 'productname',
 				price: 50,
 				quantitySold: 21,
@@ -183,7 +183,7 @@ describe("SellersDetailsController", function() {
 			dialogwindow.setData(product);
 			spyOn(appresources, "updateSellerProduct");
 			
-			scope.update(id);
+			scope.update(product);
 			
 			expect(appresources.updateSellerProduct).toHaveBeenCalledWith(id, product);
 		});
@@ -191,7 +191,7 @@ describe("SellersDetailsController", function() {
 		it("update should notify user", function() {
 			var id = 1;
 			var product = {
-				id: '1',
+				id: 1,
 				name: 'productname',
 				price: 50,
 				quantitySold: 21,
@@ -211,7 +211,7 @@ describe("SellersDetailsController", function() {
 		it("update should initalize products", function() {
 			var id = 1;
 			var product = {
-				id: '1',
+				id: 1,
 				name: 'productname',
 				price: 50,
 				quantitySold: 21,
@@ -223,7 +223,7 @@ describe("SellersDetailsController", function() {
 			
 			dialogwindow.setData(product);
 			
-			scope.update(id);
+			scope.update(product);
 			
 			expect(scope.initializeProducts).toHaveBeenCalled();
 		});
@@ -231,7 +231,7 @@ describe("SellersDetailsController", function() {
 		it("update should reset scope product", function() {
 			var id = 1;
 			var product = {
-				id: '1',
+				id: 1,
 				name: 'productname',
 				price: 50,
 				quantitySold: 21,
@@ -250,11 +250,121 @@ describe("SellersDetailsController", function() {
 					
 			dialogwindow.setData(product);
 			
-			scope.update(id);
+			scope.update(product);
 			
 			expect(scope.product).toEqual(init);
 		});
 	
+	});
+	
+	describe("AppResource success II", function() {
+		beforeEach(inject(function($controller) {
+			
+			routeparams = {
+				id: 2
+			};
+						
+			appresources.successLoadSellers = true;
+			appresources.successAddSeller = true;
+			appresources.successUpdateSeller = true;
+			appresources.successLoadSellerDetails = true;
+			appresources.successGetSellerProducts = true;
+			appresources.successAddSellerProduct = true;
+			appresources.successUpdateSellerProduct = true;
+			
+			controller = $controller("SellersDetailsController", {
+				$scope: scope,
+				AppResource: appresources,
+				centrisNotify: centrisnotify,
+				$routeParams: routeparams,
+				ProductDlg: dialogwindow
+			});
+			
+		}));
+	
+		it("constructor should define seller", function() {
+			
+			var seller = {
+				id: 2,
+				name: "Smíðaverkstæði Sigríðar",
+				category: "Skartgripir",
+				imagePath: "https://i.imgur.com/ywaPivVh.jpg"
+			};
+			
+			expect(scope.seller).toEqual(seller);
+			
+		});
+	});
+	
+	describe("AppResource no seller with ID", function() {
+		beforeEach(inject(function($controller) {
+			
+			routeparams = {
+				id: 1337
+			};
+			
+			spyOn(centrisnotify, "error");
+						
+			appresources.successLoadSellers = true;
+			appresources.successAddSeller = true;
+			appresources.successUpdateSeller = true;
+			appresources.successLoadSellerDetails = true;
+			appresources.successGetSellerProducts = true;
+			appresources.successAddSellerProduct = true;
+			appresources.successUpdateSellerProduct = true;
+			
+			controller = $controller("SellersDetailsController", {
+				$scope: scope,
+				AppResource: appresources,
+				centrisNotify: centrisnotify,
+				$routeParams: routeparams,
+				ProductDlg: dialogwindow
+			});
+			
+		}));
+	
+		it("constructor should notify user if it fails to load seller details", function() {
+			
+			expect(centrisnotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailedDetails");
+			
+		});
+		
+		it("add product should fail", function() {
+			var id = 1337;
+			var product = {
+				id: 1,
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
+			};
+			
+			dialogwindow.setData(product);
+			
+			scope.add();
+			
+			expect(centrisnotify.error).toHaveBeenCalledWith("products.Messages.SaveFailed");
+		});
+		
+		it("update product should fail", function() {
+			var id = 1337;
+			var product = {
+				id: 100,
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
+			};
+			
+			dialogwindow.setData(product);
+			
+			scope.update(product);
+			
+			expect(centrisnotify.error).toHaveBeenCalledWith("products.Messages.EditFailed");
+		});
+		
 	});
 	
 	describe("AppResource failure", function() {
@@ -300,7 +410,7 @@ describe("SellersDetailsController", function() {
 		it("add error should notify user", function() {
 			
 			var product = {
-				id: '1',
+				id: 1,
 				name: 'productname',
 				price: 50,
 				quantitySold: 21,
@@ -320,7 +430,7 @@ describe("SellersDetailsController", function() {
 			
 			var id = 1;
 			var product = {
-				id: '1',
+				id: 1,
 				name: 'productname',
 				price: 50,
 				quantitySold: 21,
@@ -330,12 +440,46 @@ describe("SellersDetailsController", function() {
 						
 			dialogwindow.setData(product);
 			
-			scope.update(id);
+			scope.update(product);
 			
 			expect(centrisnotify.error).toHaveBeenCalledWith("products.Messages.EditFailed");
 			
 		});
 	
+	});
+	
+	describe("AppResource failure II", function() {
+		
+		beforeEach(inject(function($controller) {
+			
+			routeparams = {
+				id: 1
+			};
+												
+			appresources.successLoadSellers = false;
+			appresources.successAddSeller = false;
+			appresources.successUpdateSeller = false;
+			appresources.successLoadSellerDetails = false;
+			appresources.successGetSellerProducts = false;
+			appresources.successAddSellerProduct = false;
+			appresources.successUpdateSellerProduct = false;
+			
+			controller = $controller("SellersDetailsController", {
+				$scope: scope,
+				AppResource: appresources,
+				centrisNotify: centrisnotify,
+				$routeParams: routeparams,
+				ProductDlg: dialogwindow
+			});
+			
+		}));
+		
+		it("Should define an empty array of products", function() {
+			
+			expect(scope.products).toEqual([]);
+			
+		});
+		
 	});
 	
 });

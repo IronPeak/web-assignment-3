@@ -4,9 +4,56 @@ angular.module("project3App").controller("SellersController",
 function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 	
 	function initialize() {
+		$scope.sellers = [];
+		$scope.sortoption = "NameDesc";
 		$scope.initalizeSeller();
 		$scope.refreshSellers();
+		$scope.sortSellers($scope.sortoption);
 	}
+	
+	$scope.sortSellers = function(sortoption) {
+		$scope.sortoption = sortoption;
+		if($scope.sortoption === "NameAsc") {
+			$scope.sellers.sort($scope.compareNameAsc);
+		} else if($scope.sortoption === "NameDesc") {
+			$scope.sellers.sort($scope.compareNameDesc);
+		} else if($scope.sortoption === "CategoryAsc") {
+			$scope.sellers.sort($scope.compareCategoryAsc);
+		} else if($scope.sortoption === "CategoryDesc") {
+			$scope.sellers.sort($scope.compareCategoryDesc);
+		} else {
+			//Should not be seen by the user
+			centrisNotify.error("Invalid sorting option");
+		}
+	};
+	
+	$scope.compareNameAsc = function(s1, s2) {
+		if (s1.name < s2.name) {
+			return -1;
+		} else if (s1.name > s2.name) {
+			return 1;
+		} else {
+			return 0;
+		}
+	};
+	
+	$scope.compareNameDesc = function(s1, s2) {
+		return -$scope.compareNameAsc(s1, s2);
+	};
+	
+	$scope.compareCategoryAsc = function(s1, s2) {
+		if (s1.category < s2.category) {
+			return -1;
+		} else if (s1.category > s2.category) {
+			return 1;
+		} else {
+			return 0;
+		}
+	};
+	
+	$scope.compareCategoryDesc = function(s1, s2) {
+		return -$scope.compareCategoryAsc(s1, s2);
+	};
 	
 	$scope.initalizeSeller = function() {
 		$scope.seller = {

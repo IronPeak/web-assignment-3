@@ -202,7 +202,11 @@ function AppResource() {
 					}
 				}
 			}
-			return mockHttpPromise(mockResource.successUpdateSellerProduct, current);
+			if(current !== undefined) {
+				return mockHttpPromise(mockResource.successUpdateSellerProduct, current);
+			} else {
+				return mockHttpPromise(false, null);
+			}
 		}
 	};
 

@@ -10,7 +10,7 @@ describe('directive: product', function() {
 	
 	beforeEach(module('src/components/product/product.html'));
     
-    beforeEach(inject(function($rootScope, $compile, $httpBackend) {
+    beforeEach(inject(function($rootScope, $compile) {
 		
         element = angular.element('<product product="product"></product>');
 		var scope = $rootScope.$new();
@@ -24,6 +24,7 @@ describe('directive: product', function() {
 		};
 		element = $compile(element)(scope);
 		scope.$digest();
+		
     }));
 	
 	it("Product directive exists", function() {		

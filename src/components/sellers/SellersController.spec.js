@@ -188,8 +188,8 @@ describe("SellersController", function() {
 			expect(scope.seller).not.toBe(undefined);
 		});
 		
-		it("constructor should not define sellers in scope", function() {
-			expect(scope.sellers).toBe(undefined);
+		it("constructor should define an empty list of sellers", function() {
+			expect(scope.sellers).toEqual([]);
 		});
 		
 		it("failing add should add seller to appresources", function() {
