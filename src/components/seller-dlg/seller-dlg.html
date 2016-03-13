@@ -3,7 +3,7 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header" style="padding:35px 50px;">
-                        <h4><span class="glyphicon glyphicon-user"></span> Add Seller</h4>
+                        <h4><span class="glyphicon glyphicon-user"></span><span  translate="seller-dlg.SellerAdd"></span></h4>
                     </div>
                     <div class="modal-body" style="padding:40px 50px;">
 
@@ -17,11 +17,15 @@
                                 <label for="name">
                                     <span translate="seller-dlg.Name"></span></label>
                                 <input type="text" class="form-control" id="name" name="name" ng-minlength="3" ng-maxlength="32" ng-model="seller.name" placeholder="{{ 'seller-dlg.Name' | translate }}" required>
+                                      <span class="error" ng-show="sellerform.name.$error.maxlength" translate="seller-dlg.ErrorToLong"></span>
+                                            <span class="error" ng-show="sellerform.name.$error.minlength" translate="seller-dlg.ErrorToShort"></span>
                             </div>
                             <div class="form-group">
                                 <label for="category">
                                    <span translate="seller-dlg.Category"></span></label>
                                 <input type="text" class="form-control" id="category" name="category" ng-minlength="3" ng-maxlength="24" ng-model="seller.category" placeholder="{{ 'seller-dlg.Category' | translate }}" required>
+                                            <span class="error" ng-show="sellerform.category.$error.maxlength" translate="seller-dlg.ErrorToLong"></span>
+                                            <span class="error" ng-show="sellerform.category.$error.minlength" translate="seller-dlg.ErrorToShort"></span>
                             </div>
                             <div class="form-group">
                                 <label for="imagepath">

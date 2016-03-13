@@ -1,11 +1,14 @@
 {
 	"product-dlg" : {
+		"ProductAdd":					"Add product",
 		"Name":                      "Name",
 		"ImagePath": 				"Image Path",
 		"Cancel":					"Cancel",
 		"Price":					"Price",
 		"QuantitySold": 			"Quantity Sold",
 		"QuantityInStock": 			"Quantity in Stock",
-		"ImagePathDisc":			"An url to an image of the product"
+		"ImagePathDisc":			"An url to an image of the product",
+		"ErrorToShort":				"Too Short",
+		"ErrorToLong":				"Too Long"
 	}
 }

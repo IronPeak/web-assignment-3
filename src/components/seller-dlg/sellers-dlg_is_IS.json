@@ -1,11 +1,14 @@
 {
 	"seller-dlg" : {
+		"SellerAdd":					"Bæta við seljanda",
 		"Name":                      "Nafn",
 		"Category":					"Flokkur",
 		"ImagePath": 				"Mynd",
 		"Cancel":					"Loka",
 		"Edit":						"Breyta",
 		"ImagePathDisc":			"Vefslóð á mynd",
-		"Add" :						"Add"
+		"Add" :						"Add",
+		"ErrorToShort":				"Of Stutt",
+		"ErrorToLong":				"Of Langt"
 	}
 }

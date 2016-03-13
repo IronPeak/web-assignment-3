@@ -1,11 +1,14 @@
 {
 	"seller-dlg" : {
+		"SellerAdd":					"Add Seller",
 		"Name":                      "Name",
 		"Category":					"Category",
 		"ImagePath": 				"Image Path",
 		"Cancel":					"Cancel",
 		"Edit":						"Edit",
 		"ImagePathDisc":			"An url to an image of the product",
-		"Add" :						"Add"
+		"Add" :						"Add",
+		"ErrorToShort":				"Too Short",
+		"ErrorToLong":				"Too Long"
 	}
 }

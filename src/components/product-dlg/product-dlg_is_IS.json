@@ -1,11 +1,14 @@
 {
 	"product-dlg" : {
+		"ProductAdd":					"Bæta við vöru",
 		"Name":                     "Nafn",
 		"ImagePath": 				"Mynd",
 		"Cancel":					"Loka",
 		"Price":					"Verð",
 		"QuantitySold": 			"Fjöldi Seldur",
 		"QuantityInStock": 			"Fjöldi á lager",
-		"ImagePathDisc":			"Vefslóð á mynd"
+		"ImagePathDisc":			"Vefslóð á mynd",
+		"ErrorToShort":				"Of Stutt",
+		"ErrorToLong":				"Of Langt"
 	}
 }
