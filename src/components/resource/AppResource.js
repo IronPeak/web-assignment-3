@@ -170,8 +170,14 @@ function AppResource() {
 		addSellerProduct: function addSellerProduct(id, product) {
 			var success = false;
 			if (mockResource.successAddSellerProduct) {
-				var seller = _.find(mockSellers, function(o){ return o.id === id;});
-				if (seller) {
+				var seller;
+				for(var i = 0; i < mockSellers.length; i++) {
+					if(mockSellers[i].id === id) {
+						seller = mockSellers[i];
+						break;
+					}
+				}
+				if (seller !== undefined) {
 					success = true;
 					productID += 1;
 					product.id = productID;

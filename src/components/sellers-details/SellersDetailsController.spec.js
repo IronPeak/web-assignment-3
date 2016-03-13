@@ -5,8 +5,8 @@ describe("SellersDetailsController", function() {
 	beforeEach(module("project3App"));
 	
 	beforeEach(module('translateNoop'));
-	
-	var controller, scope, appresources, centrisnotify, routeparams;
+		
+	var controller, scope, appresources, centrisnotify, routeparams, dialogwindow;
 	
 	beforeEach(inject(function($rootScope, $injector) {
 	
@@ -15,6 +15,32 @@ describe("SellersDetailsController", function() {
 	
 	}));
 	
+	beforeEach(function () {
+		dialogwindow = {
+			data: undefined,
+			setData: function(d) {
+				this.data = d;
+			},
+			show: function(arg) {
+				var ret = this.data;
+				return {
+					then: function(fn) {
+						fn(ret);
+					}
+				};
+			}
+		};
+		
+		centrisnotify = {
+			success: function(msg) {
+				
+			},
+			error: function(msg) {
+				
+			}
+		};
+	});
+	
 	describe("AppResource success", function() {
 		
 		beforeEach(inject(function($controller) {
@@ -22,7 +48,7 @@ describe("SellersDetailsController", function() {
 			routeparams = {
 				id: 1
 			};
-			
+						
 			appresources.successLoadSellers = true;
 			appresources.successAddSeller = true;
 			appresources.successUpdateSeller = true;
@@ -35,7 +61,8 @@ describe("SellersDetailsController", function() {
 				$scope: scope,
 				AppResource: appresources,
 				centrisNotify: centrisnotify,
-				$routeParams: routeparams
+				$routeParams: routeparams,
+				ProductDlg: dialogwindow
 			});
 			
 		}));
@@ -58,10 +85,179 @@ describe("SellersDetailsController", function() {
 			expect(scope.products).not.toBe(undefined);
 			
 		});
+		
+		it("add should add product to appresources", function() {
+			var id = 1;
+			var product = {
+				id: '1',
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
+			};
+			
+			dialogwindow.setData(product);
+			spyOn(appresources, "addSellerProduct");
+			
+			scope.add();
+			
+			expect(appresources.addSellerProduct).toHaveBeenCalledWith(id, product);
+		});
+		
+		it("add should notify user", function() {
+			var product = {
+				id: '1',
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
+			};
+			
+			spyOn(centrisnotify, "success");
+			
+			dialogwindow.setData(product);
+			
+			scope.add();
+			
+			expect(centrisnotify.success).toHaveBeenCalledWith("products.Messages.SaveSucceeded");
+		});
+		
+		it("add should initalize products", function() {
+			var product = {
+				id: '1',
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
+			};
+			
+			spyOn(scope, "initializeProducts");
+			
+			dialogwindow.setData(product);
+			
+			scope.add();
+			
+			expect(scope.initializeProducts).toHaveBeenCalled();
+		});
+		
+		it("add should reset scope product", function() {
+			var product = {
+				id: '1',
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
+			};
+			
+			var init = {
+				id: '',
+				name: '',
+				price: '',
+				quantitySold: '',
+				quantityInStock: '',
+				imagePath: ''
+			};
+					
+			dialogwindow.setData(product);
+			
+			scope.add();
+			
+			expect(scope.product).toEqual(init);
+		});
+		
+		it("update should update product in appresources", function() {
+			var id = 1;
+			var product = {
+				id: '1',
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
+			};
+			
+			dialogwindow.setData(product);
+			spyOn(appresources, "updateSellerProduct");
+			
+			scope.update(id);
+			
+			expect(appresources.updateSellerProduct).toHaveBeenCalledWith(id, product);
+		});
+		
+		it("update should notify user", function() {
+			var id = 1;
+			var product = {
+				id: '1',
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
+			};
+			
+			spyOn(centrisnotify, "success");
+			
+			dialogwindow.setData(product);
+			
+			scope.update(id);
+			
+			expect(centrisnotify.success).toHaveBeenCalledWith("products.Messages.EditSucceeded");
+		});
+		
+		it("update should initalize products", function() {
+			var id = 1;
+			var product = {
+				id: '1',
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
+			};
+			
+			spyOn(scope, "initializeProducts");
+			
+			dialogwindow.setData(product);
+			
+			scope.update(id);
+			
+			expect(scope.initializeProducts).toHaveBeenCalled();
+		});
+		
+		it("update should reset scope product", function() {
+			var id = 1;
+			var product = {
+				id: '1',
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
+			};
+			
+			var init = {
+				id: '',
+				name: '',
+				price: '',
+				quantitySold: '',
+				quantityInStock: '',
+				imagePath: ''
+			};
+					
+			dialogwindow.setData(product);
+			
+			scope.update(id);
+			
+			expect(scope.product).toEqual(init);
+		});
 	
 	});
 	
-	describe("AppResource success", function() {
+	describe("AppResource failure", function() {
 		
 		beforeEach(inject(function($controller) {
 			
@@ -69,10 +265,8 @@ describe("SellersDetailsController", function() {
 				id: 1
 			};
 			
-			centrisnotify = {
-				error: jasmine.createSpy('error')
-			};
-						
+			spyOn(centrisnotify, "error");
+									
 			appresources.successLoadSellers = false;
 			appresources.successAddSeller = false;
 			appresources.successUpdateSeller = false;
@@ -85,7 +279,8 @@ describe("SellersDetailsController", function() {
 				$scope: scope,
 				AppResource: appresources,
 				centrisNotify: centrisnotify,
-				$routeParams: routeparams
+				$routeParams: routeparams,
+				ProductDlg: dialogwindow
 			});
 			
 		}));
@@ -97,52 +292,47 @@ describe("SellersDetailsController", function() {
 		});
 		
 		it("constructor products should centrisnotify error", function() {
-			
+						
 			expect(centrisnotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailedDetails");
 			
 		});
-	
-	});
-	
-	describe("AppResource result undefined", function() {
 		
-		beforeEach(inject(function($controller) {
+		it("add error should notify user", function() {
 			
-			routeparams = {
-				//An id that is not in the mock appresources
-				id: undefined
-			};
-			
-			centrisnotify = {
-				error: jasmine.createSpy('error')
+			var product = {
+				id: '1',
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
 			};
 						
-			appresources.successLoadSellers = true;
-			appresources.successAddSeller = true;
-			appresources.successUpdateSeller = true;
-			appresources.successLoadSellerDetails = true;
-			appresources.successGetSellerProducts = true;
-			appresources.successAddSellerProduct = true;
-			appresources.successUpdateSellerProduct = true;
+			dialogwindow.setData(product);
 			
-			controller = $controller("SellersDetailsController", {
-				$scope: scope,
-				AppResource: appresources,
-				centrisNotify: centrisnotify,
-				$routeParams: routeparams
-			});
+			scope.add();
 			
-		}));
-	
-		it("constructor seller should centrisnotify error", function() {
-			
-			expect(centrisnotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailedDetails");
+			expect(centrisnotify.error).toHaveBeenCalledWith("products.Messages.SaveFailed");
 			
 		});
 		
-		it("constructor products should centrisnotify error", function() {
+		it("update error should notify user", function() {
 			
-			expect(centrisnotify.error).toHaveBeenCalledWith("sellers.Messages.LoadFailedDetails");
+			var id = 1;
+			var product = {
+				id: '1',
+				name: 'productname',
+				price: 50,
+				quantitySold: 21,
+				quantityInStock: 100,
+				imagePath: "images.com/abc.jpg"
+			};
+						
+			dialogwindow.setData(product);
+			
+			scope.update(id);
+			
+			expect(centrisnotify.error).toHaveBeenCalledWith("products.Messages.EditFailed");
 			
 		});
 	

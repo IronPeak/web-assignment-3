@@ -27,11 +27,11 @@ describe("ProductDlgController", function() {
 		
 		}));
 		
-		it("constructor should set scope seller to modal", function() {
+		it("constructor should set scope product to modal", function() {
 			expect(scope.product).toBe(modal);
 		});
 		
-		it("onOk should call close with scope seller", function() {
+		it("onOk should call close with scope product", function() {
 			
 			scope.product = {
 				id: 3,
@@ -71,7 +71,7 @@ describe("ProductDlgController", function() {
 		
 		}));
 		
-		it("onOk should call close with scope seller", function() {
+		it("onOk should call close with scope product", function() {
 			
 			scope.product = {
 				id: 3,

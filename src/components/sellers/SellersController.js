@@ -46,7 +46,7 @@ function SellersController($scope, AppResource, SellerDlg, centrisNotify) {
 			var result = AppResource.updateSeller(seller.id, updated);
 			if(result !== undefined) {
 				result.success(function(s) {
-					centrisNotify.success("sellers.Messages.EditSucceded");
+					centrisNotify.success("sellers.Messages.EditSucceeded");
 					$scope.refreshSellers();
 					initialize();
 				}).error(function() {

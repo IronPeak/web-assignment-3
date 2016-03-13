@@ -11,7 +11,7 @@
 			"LoadFailed":            "Ekki tókst að sækja lista yfir seljendur",
 			"LoadFailedDetails":	"Ekki tókst að sækja seljanda",
 			"SaveSucceeded":         "Nýjum seljanda hefur verið bætt við",
-			"EditSucceded":			"Seljanda hefur verið breytt",
+			"EditSucceeded":			"Seljanda hefur verið breytt",
 			"SaveFailed":            "Því miður tókst ekki að bæta við nýjum seljanda",
 			"EditFailed": 			"Því miður tókst ekki að breyta seljanda"
 		}

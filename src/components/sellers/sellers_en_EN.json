@@ -13,7 +13,7 @@
 			"SaveSucceeded":         "The seller has been added successfully",
 			"SaveFailed":            "Unfortunately we could not add a new seller",
 			"EditFailed": 			"Unfortunately we could not edit a new seller",
-			"EditSucceded":			"Seller has been edited"
+			"EditSucceeded":			"Seller has been edited"
 		}
 	}
 }

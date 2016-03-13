@@ -3,21 +3,23 @@
 angular.module("project3App").controller("SellersDetailsController",
 	function SellersDetailsController($scope, AppResource, centrisNotify, $routeParams, ProductDlg) {
 
-		initializeSeller();
-		initializeProduct();
-		initializeDetails();
-		initializeProducts();
+		function initalize() {
+			$scope.initializeSeller();
+			$scope.initializeProduct();
+			$scope.initializeDetails();
+			$scope.initializeProducts();
+		}
 		
-		function initializeSeller() {
+		$scope.initializeSeller = function() {
 			$scope.seller = {
 				id: parseInt($routeParams.id),
 				name: '',
 				category: '',
 				imagePath: ''
 			};
-		}
+		};
 
-		function initializeProduct() {
+		$scope.initializeProduct = function() {
 			$scope.product = {
 				id: '',
 				name: '',
@@ -26,9 +28,9 @@ angular.module("project3App").controller("SellersDetailsController",
 				quantityInStock: '',
 				imagePath: ''
 			};
-		}
+		};
 
-		function initializeDetails() {
+		$scope.initializeDetails = function() {
 			var result = AppResource.getSellerDetails($scope.seller.id);
 			result.success(function(s) {
 				$scope.seller.id = s.id;
@@ -39,9 +41,9 @@ angular.module("project3App").controller("SellersDetailsController",
 			}).error(function() {
 				centrisNotify.error("sellers.Messages.LoadFailedDetails");
 			});
-		}
+		};
 
-		function initializeProducts() {
+		$scope.initializeProducts = function() {
 			$scope.products = [];
 			var result = AppResource.getSellerProducts($scope.seller.id);
 			result.success(function(s) {
@@ -51,7 +53,7 @@ angular.module("project3App").controller("SellersDetailsController",
 				centrisNotify.error("sellers.Messages.LoadFailedDetails");
 			});
 			return;
-		}
+		};
 		
 		$scope.add = function() {
 			ProductDlg.show().then(function(product) {
@@ -59,8 +61,8 @@ angular.module("project3App").controller("SellersDetailsController",
 				if(result !== undefined) {
 					result.success(function(s) {
 						centrisNotify.success("products.Messages.SaveSucceeded"); 
-						initializeProducts();
-						initializeProduct();
+						$scope.initializeProducts();
+						$scope.initializeProduct();
 					}).error(function() {
 						centrisNotify.error("products.Messages.SaveFailed");
 					});
@@ -74,14 +76,16 @@ angular.module("project3App").controller("SellersDetailsController",
 				var result = AppResource.updateSellerProduct($scope.seller.id, updated);
 				if(result !== undefined) {
 					result.success(function(s) {
-						centrisNotify.success("products.Messages.EditSucceded");
-						initializeProducts();
-						initializeProduct();
+						centrisNotify.success("products.Messages.EditSucceeded");
+						$scope.initializeProducts();
+						$scope.initializeProduct();
 					}).error(function() {
 						centrisNotify.error("products.Messages.EditFailed");
 					});
 				}
 			});
 		};
+		
+		initalize();
 
 	});
