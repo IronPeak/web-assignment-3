@@ -6,6 +6,8 @@
 		"Edit": 				"Edit",
 		"QuantitySold": 			"Quantity Sold",
 		"QuantityInStock": 			"Quantity In Stock",
+		"Product": 					"Product",
+		"TopProduct": 					"Top Products",
 		"Messages" : {
 			"LoadFailed":            "Failed to load the list of products",
 			"LoadFailedDetails":	 "Failed to load product details",
