@@ -3,6 +3,17 @@
 		"Name":				"Nafn",
 		"Price":				"Verð",
 		"View": 				"Skoða",
-		"Edit": 				"Breyta"
+		"Edit": 				"Breyta",
+		"QuantitySold": 			"Fjöldi Seldur",
+		"QuantityInStock": 			"Fjöldi á lager",
+		"Messages" : {
+			"LoadFailed":            "Ekki tókst að sækja lista yfir vörur",
+			"LoadFailedDetails":	"Ekki tókst að sækja vörur",
+			"SaveSucceeded":         "Nýrri vöru hefur verið bætt við",
+			"EditSucceeded":			"Vöru hefur verið breytt",
+			"SaveFailed":            "Því miður tókst ekki að bæta við nýrri vöru",
+			"EditFailed": 			"Því miður tókst ekki að breyta vöru"
+		}
+
 	}
 }

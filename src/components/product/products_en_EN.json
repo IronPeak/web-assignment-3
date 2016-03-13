@@ -3,6 +3,16 @@
 		"Name":				"Name",
 		"Price":				"Price",
 		"View": 				"View",
-		"Edit": 				"Edit"
+		"Edit": 				"Edit",
+		"QuantitySold": 			"Quantity Sold",
+		"QuantityInStock": 			"Quantity In Stock",
+		"Messages" : {
+			"LoadFailed":            "Failed to load the list of products",
+			"LoadFailedDetails":	 "Failed to load product details",
+			"SaveSucceeded":         "A product has been added successfully",
+			"SaveFailed":            "Unfortunately we could not add a a new product",
+			"EditFailed": 			"Unfortunately we could not edit the product",
+			"EditSucceeded":			"Product has been edited"
+		}
 	}
 }
