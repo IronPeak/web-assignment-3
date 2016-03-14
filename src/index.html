@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html ng-app="project3App">
+
 <head>
-	<title>WEPO Assignment 3 - Online Web Store</title>
-	<link rel="stylesheet" href="src/vendor/bootstrap/dist/css/bootstrap.min.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="styles/vendor.css">
-	<link rel="stylesheet" href="styles/app.css">
+    <title>WEPO Assignment 3 - Online Web Store</title>
+    <link rel="stylesheet" href="src/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/vendor.css">
+    <link rel="stylesheet" href="styles/app.css">
 
 
 </head>
-		<div ng-controller="navbarController" ng-include="'src/components/nav-bar/navbar.html'" class="margin-bot"></div>
-	<main class="container-fluid">
-		<div class="Main clearfix" ng-view id="content"></div>
-	</main>
+<div ng-controller="navbarController" ng-include="'src/components/nav-bar/navbar.html'" class="margin-bot"></div>
+<main class="container-fluid">
+    <div class="Main clearfix" ng-view id="content"></div>
+</main>
 
-	<toaster-container></toaster-container>
+<toaster-container></toaster-container>
 
-	<!-- inject:vendor:js -->
-	<!-- endinject -->
+<!-- inject:vendor:js -->
+<!-- endinject -->
 
-	<!-- inject:app:js -->
-	<!-- endinject -->
+<!-- inject:app:js -->
+<!-- endinject -->
 
-	<!-- inject:templates:js -->
-	<!-- endinject -->
-	<script src="src/vendor/angular-route/angular-route.min.js"></script>
-	<script src="src/vendor/jquery/dist/jquery.min.js"></script>
-	<script src="src/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- inject:templates:js -->
+<!-- endinject -->
+<script src="src/vendor/angular-route/angular-route.min.js"></script>
+<script src="src/vendor/jquery/dist/jquery.min.js"></script>
+<script src="src/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
 

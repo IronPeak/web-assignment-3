@@ -1,45 +1,33 @@
-
 <div class="sellerdetails">
-
-	<div class="left">
-		<img ng-src="{{seller.imagePath || 'https://pbs.twimg.com/profile_images/425274582581264384/X3QXBN8C.jpeg'}}" alt="{{ 'seller.imagePath' | translate }}" style="width:150px;height:150px;">
-		<div class="details">
-			<h4> <span translate="sellers.Name"></span>: {{seller.name}}</h4>
-			<h4> <span translate="sellers.Category"></span>: {{seller.category}} </h4>
-		</div>
-
-	</div>
-
-	<div class="right">
-	<button type="button" class="btn btn-default btn-lg" id="add-button" ng-click="add()"><span id="glyph-add" class="glyphicon glyphicon-plus-sign"></span>
-        </button>
+    <div class="left">
+        <img ng-src="{{seller.imagePath || 'https://pbs.twimg.com/profile_images/425274582581264384/X3QXBN8C.jpeg'}}" alt="{{ 'seller.imagePath' | translate }}" style="width:150px;height:150px;">
+        <div class="details">
+            <h4> <span translate="sellers.Name"></span>: {{seller.name}}</h4>
+            <h4> <span translate="sellers.Category"></span>: {{seller.category}} </h4>
         </div>
 
-
-
-
-
-
-
+    </div>
+    <div class="right">
+        <button type="button" class="btn btn-default btn-lg" id="add-button" ng-click="add()"><span id="glyph-add" class="glyphicon glyphicon-plus-sign"></span>
+        </button>
+    </div>
 </div>
 
-	 <uib-tabset active="active">
-	<uib-tab index="1" select="alertMe()">
-	      <uib-tab-heading>
-	        <span translate="products.Product"></span>
-	      </uib-tab-heading>
-	      <div ng-repeat="product in products">
-			<product product="product" on-view="view(product)" on-edit="update(product)"> </product>
-		  </div>
-	    </uib-tab>
-	    <uib-tab index="2" select="alertMe()">
-	      <uib-tab-heading>
-	      	<span translate="products.TopProduct"></span>
-		      </uib-tab-heading>
-		      <div ng-repeat="product in topProducts">
-				<product product="product" on-view="view(product)" on-edit="update(product)"> </product>
-			  </div>
-	    </uib-tab>
-	  </uib-tabset>
-
-</div>
+<uib-tabset active="active">
+    <uib-tab index="1" select="alertMe()">
+        <uib-tab-heading>
+            <span translate="products.Product"></span>
+        </uib-tab-heading>
+        <div ng-repeat="product in products">
+            <product product="product" on-view="view(product)" on-edit="update(product)"> </product>
+        </div>
+    </uib-tab>
+    <uib-tab index="2" select="alertMe()">
+        <uib-tab-heading>
+            <span translate="products.TopProduct"></span>
+        </uib-tab-heading>
+        <div ng-repeat="product in topProducts">
+            <product product="product" on-view="view(product)" on-edit="update(product)"> </product>
+        </div>
+    </uib-tab>
+</uib-tabset>

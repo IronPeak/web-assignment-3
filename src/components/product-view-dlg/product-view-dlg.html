@@ -1,21 +1,19 @@
-
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header" style="padding:35px 50px;">
-                        <h2 class="center-text">{{product.name}}</h2>
-                    </div>
-                    <div class="modal-body" style="padding:40px 50px;">
-						<div class="">
-						    <img class="product-view-image img-thumbnail center-block" src="{{product.imagePath}}"\>
-                        </div>
-                        <div class="center-block" style="padding:40px 50px 0px 50px; margin:10px 10px 0px 10px;">
-							<p><span translate="product-dlg.Price"></span>:           <span class="pull-right">{{product.price}}</span></p>
-							<p><span translate="product-dlg.QuantityInStock"></span>: <span class="pull-right">{{product.quantityInStock}}</span></p>
-							<p><span translate="product-dlg.QuantitySold"></span>:    <span class="pull-right">{{product.quantitySold}}</span></p>
-						</div>	
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal" ng-click="onCancel()"><span class="glyphicon glyphicon-remove"></span> <span translate="product-dlg.Cancel"></button>
-                    </div>
-                </div>
+<!-- Modal content-->
+<div class="modal-content">
+    <div class="modal-header" style="padding:35px 50px;">
+        <h2 class="center-text">{{product.name}}</h2>
+    </div>
+    <div class="modal-body" style="padding:40px 50px;">
+		<div class="">
+		    <img class="product-view-image img-thumbnail center-block" src="{{product.imagePath}}"\>
+        </div>
+        <div class="center-block" style="padding:40px 50px 0px 50px; margin:10px 10px 0px 10px;">
+			<p><span translate="product-dlg.Price"></span>:           <span class="pull-right">{{product.price}}</span></p>
+			<p><span translate="product-dlg.QuantityInStock"></span>: <span class="pull-right">{{product.quantityInStock}}</span></p>
+			<p><span translate="product-dlg.QuantitySold"></span>:    <span class="pull-right">{{product.quantitySold}}</span></p>
+		</div>	
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal" ng-click="onCancel()"><span class="glyphicon glyphicon-remove"></span> <span translate="product-dlg.Cancel"></button>
+    </div>
+</div>

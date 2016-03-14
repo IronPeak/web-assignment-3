@@ -1,65 +1,59 @@
 <div class="container">
-
     <div class="header">
 
     </div>
-
-        <button type="button" class="btn btn-default btn-lg" id="add-button" ng-click="add()"><span id="glyph-add" class="glyphicon glyphicon-plus-sign"></span>
-        </button>
-
-
-
+    <button type="button" class="btn btn-default btn-lg" id="add-button" ng-click="add()"><span id="glyph-add" class="glyphicon glyphicon-plus-sign"></span></button>
     <div class="panel panel-default">
-		<div class="table-responsive seller-table-wrapper"> 
-			<table class="table table-hover seller-table">
-				<thead>
-					<tr>
-						<th>
-							<a href="" ng-show="sortoption == 'NameAsc'" ng-click="sortSellers('NameDesc')">
-								<span translate="sellers.Name"></span>
-								<span class="glyphicon glyphicon-triangle-bottom"></span>
-							</a>
-							<a href="" ng-show="sortoption == 'NameDesc'" ng-click="sortSellers('NameAsc')">
-								<span translate="sellers.Name"></span>
-								<span class="glyphicon glyphicon-triangle-top"></span>
-							</a>
-							<a href="" ng-hide="sortoption == 'NameAsc' || sortoption == 'NameDesc'" ng-click="sortSellers('NameAsc')">
-								<span translate="sellers.Name"></span>
-							</a>
-						</th>
-						<th>
-							<a href="" ng-show="sortoption == 'CategoryAsc'" ng-click="sortSellers('CategoryDesc')">
-								<span translate="sellers.Category"></span>
-								<span class="glyphicon glyphicon-triangle-bottom"></span>
-							</a>
-							<a href="" ng-show="sortoption == 'CategoryDesc'" ng-click="sortSellers('CategoryAsc')">
-								<span translate="sellers.Category"></span>
-								<span class="glyphicon glyphicon-triangle-top"></span>
-							</a>
-							<a href="" ng-hide="sortoption == 'CategoryAsc' || sortoption == 'CategoryDesc'" ng-click="sortSellers('CategoryAsc')">
-								<span translate="sellers.Category"></span>
-							</a>
-						</th>
-						<th class="seller-table-head-actions">
-						<span translate="sellers.Action" />
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<a href="#">
-						<tr ng-repeat="s in sellers">
-							<td class="seller-name">{{s.name}}</td>
-							<td class="seller-category">{{s.category}}</td>
-							<td class="seller-actions">      
-							 <button type="button" class="btn btn-info seller-edit-button" id="editBtn" ng-click="update(s)"><span class="glyphicon glyphicon-edit" translate="sellers.Edit"/>
-							 </button>
-							    <a href="#/{{s.id}}" class="btn btn-info seller-view-button" role="button"><span class="glyphicon glyphicon-zoom-in" translate="sellers.View"/></a>
-							</td>
-						</tr>
-					</a>
-				</tbody>
-			</table>
-		</div>
-	</div>
-
+        <div class="table-responsive seller-table-wrapper">
+            <table class="table table-hover seller-table">
+                <thead>
+                    <tr>
+                        <th>
+                            <a href="" ng-show="sortoption == 'NameAsc'" ng-click="sortSellers('NameDesc')">
+                                <span translate="sellers.Name"></span>
+                                <span class="glyphicon glyphicon-triangle-bottom"></span>
+                            </a>
+                            <a href="" ng-show="sortoption == 'NameDesc'" ng-click="sortSellers('NameAsc')">
+                                <span translate="sellers.Name"></span>
+                                <span class="glyphicon glyphicon-triangle-top"></span>
+                            </a>
+                            <a href="" ng-hide="sortoption == 'NameAsc' || sortoption == 'NameDesc'" ng-click="sortSellers('NameAsc')">
+                                <span translate="sellers.Name"></span>
+                            </a>
+                        </th>
+                        <th>
+                            <a href="" ng-show="sortoption == 'CategoryAsc'" ng-click="sortSellers('CategoryDesc')">
+                                <span translate="sellers.Category"></span>
+                                <span class="glyphicon glyphicon-triangle-bottom"></span>
+                            </a>
+                            <a href="" ng-show="sortoption == 'CategoryDesc'" ng-click="sortSellers('CategoryAsc')">
+                                <span translate="sellers.Category"></span>
+                                <span class="glyphicon glyphicon-triangle-top"></span>
+                            </a>
+                            <a href="" ng-hide="sortoption == 'CategoryAsc' || sortoption == 'CategoryDesc'" ng-click="sortSellers('CategoryAsc')">
+                                <span translate="sellers.Category"></span>
+                            </a>
+                        </th>
+                        <th class="seller-table-head-actions">
+                            <span translate="sellers.Action" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <a href="#">
+                        <tr ng-repeat="s in sellers">
+                            <td class="seller-name">{{s.name}}</td>
+                            <td class="seller-category">{{s.category}}</td>
+                            <td class="seller-actions">
+                                <button type="button" class="btn btn-info seller-edit-button" id="editBtn" ng-click="update(s)"><span class="glyphicon glyphicon-edit" translate="sellers.Edit" />
+                                </button>
+                                <a href="#/{{s.id}}" class="btn btn-info seller-view-button" role="button"><span class="glyphicon glyphicon-zoom-in" translate="sellers.View" />
+                                </a>
+                            </td>
+                        </tr>
+                    </a>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
